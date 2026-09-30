@@ -4,26 +4,26 @@ All 8 families, 24 versions, owners, approver records, and exact statements in `
 
 ## Family fields
 
-| Field | Meaning |
-| --- | --- |
-| `id` | Stable family identifier used in navigation |
-| `topic` | Short search and browsing category |
-| `title` | Human-readable statement family title |
-| `description` | Short explanation of its purpose |
+| Field         | Meaning                                     |
+| ------------- | ------------------------------------------- |
+| `id`          | Stable family identifier used in navigation |
+| `topic`       | Short search and browsing category          |
+| `title`       | Human-readable statement family title       |
+| `description` | Short explanation of its purpose            |
 
 ## Version fields
 
-| Field | Meaning |
-| --- | --- |
+| Field                       | Meaning                                                                             |
+| --------------------------- | ----------------------------------------------------------------------------------- |
 | `id`, `familyId`, `version` | Distinct version identifier, owning family, monotonically increasing version number |
-| `text` | Exact copy payload, including punctuation; never append metadata |
-| `status` | `approved`, `draft`, or `withdrawn`; expiry is calculated, not stored as a status |
-| `audiences` | Explicit permitted audiences: `press`, `partners`, `employees` |
-| `regions` | Permitted regions: `global`, `americas`, `emea`, `apac` |
-| `owner` | Invented content owner, with no real contact information |
-| `approver`, `approvedAt` | Invented approval record; `null` for drafts |
-| `effectiveAt`, `expiresAt` | Inclusive ISO calendar date bounds |
-| `replacementId` | Optional explicit same-family successor version |
+| `text`                      | Exact copy payload, including punctuation; never append metadata                    |
+| `status`                    | `approved`, `draft`, or `withdrawn`; expiry is calculated, not stored as a status   |
+| `audiences`                 | Explicit permitted audiences: `press`, `partners`, `employees`                      |
+| `regions`                   | Permitted regions: `global`, `americas`, `emea`, `apac`                             |
+| `owner`                     | Invented content owner, with no real contact information                            |
+| `approver`, `approvedAt`    | Invented approval record; `null` for drafts                                         |
+| `effectiveAt`, `expiresAt`  | Inclusive ISO calendar date bounds                                                  |
+| `replacementId`             | Optional explicit same-family successor version                                     |
 
 ## Rules and examples
 

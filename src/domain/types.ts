@@ -1,6 +1,9 @@
 export type Audience = 'press' | 'partners' | 'employees';
 export type Region = 'global' | 'americas' | 'emea' | 'apac';
-export interface Scope { audience: Audience; region: Region }
+export interface Scope {
+  audience: Audience;
+  region: Region;
+}
 export interface StatementFamily {
   id: string;
   topic: string;
