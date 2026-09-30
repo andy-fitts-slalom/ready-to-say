@@ -1,0 +1,524 @@
+{
+  "families": [
+    {
+      "id": "company",
+      "topic": "Company outlook",
+      "title": "Our direction",
+      "description": "A clear introduction to Meridian Signal Group and its creative focus."
+    },
+    {
+      "id": "streaming",
+      "topic": "Streaming",
+      "title": "Streamline launch",
+      "description": "Approved wording for our fictional entertainment service launch."
+    },
+    {
+      "id": "publishing",
+      "topic": "Digital publishing",
+      "title": "Independent editorial",
+      "description": "How our publications make editorial decisions."
+    },
+    {
+      "id": "podcasts",
+      "topic": "Podcasts",
+      "title": "Sound with purpose",
+      "description": "The role of original voices in our podcast portfolio."
+    },
+    {
+      "id": "events",
+      "topic": "Live events",
+      "title": "Gathering together",
+      "description": "Regional information about our upcoming live events."
+    },
+    {
+      "id": "partnerships",
+      "topic": "Partnerships",
+      "title": "Working with partners",
+      "description": "A shared approach to creative partnerships."
+    },
+    {
+      "id": "workplace",
+      "topic": "Our people",
+      "title": "A supportive workplace",
+      "description": "Employee information about our working practices."
+    },
+    {
+      "id": "sustainability",
+      "topic": "Responsibility",
+      "title": "Thoughtful production",
+      "description": "Our approach to resource use in production."
+    }
+  ],
+  "versions": [
+    {
+      "id": "company-v1",
+      "familyId": "company",
+      "version": 1,
+      "text": "Meridian Signal Group brings digital publishing, streaming entertainment, podcasts, and live events together to connect people with original ideas.",
+      "status": "approved",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Mira Solen",
+      "approver": "Remy Arden",
+      "approvedAt": "2024-12-18",
+      "effectiveAt": "2025-01-01",
+      "expiresAt": "2026-03-31",
+      "replacementId": "company-v2"
+    },
+    {
+      "id": "company-v2",
+      "familyId": "company",
+      "version": 2,
+      "text": "Meridian Signal Group creates space for original ideas across digital publishing, streaming entertainment, podcasts, and live events. Our focus is thoughtful storytelling and meaningful connections with audiences.",
+      "status": "approved",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Mira Solen",
+      "approver": "Remy Arden",
+      "approvedAt": "2025-08-25",
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "company-v3",
+      "familyId": "company",
+      "version": 3,
+      "text": "Meridian Signal Group is exploring new ways for audiences to discover original stories across our creative portfolio.",
+      "status": "draft",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Mira Solen",
+      "approver": null,
+      "approvedAt": null,
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "streaming-v1",
+      "familyId": "streaming",
+      "version": 1,
+      "text": "Streamline is Meridian Signal Group’s entertainment service, bringing a curated collection of original series to viewers in participating markets.",
+      "status": "approved",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Theo Venn",
+      "approver": "Remy Arden",
+      "approvedAt": "2024-12-18",
+      "effectiveAt": "2025-01-01",
+      "expiresAt": "2025-06-30"
+    },
+    {
+      "id": "streaming-v2",
+      "familyId": "streaming",
+      "version": 2,
+      "text": "Streamline will introduce a new collection of original series this season. Availability and release dates will be confirmed for each participating market.",
+      "status": "approved",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Theo Venn",
+      "approver": "Remy Arden",
+      "approvedAt": "2025-08-25",
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2025-10-15"
+    },
+    {
+      "id": "streaming-v3",
+      "familyId": "streaming",
+      "version": 3,
+      "text": "Streamline is preparing a refreshed discovery experience for viewers. Further details will be shared after the review process is complete.",
+      "status": "draft",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Theo Venn",
+      "approver": null,
+      "approvedAt": null,
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "publishing-v1",
+      "familyId": "publishing",
+      "version": 1,
+      "text": "Meridian Signal Group’s publications make editorial decisions through their respective editorial teams, guided by clear standards for accuracy and fairness.",
+      "status": "withdrawn",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Nia Calder",
+      "approver": "Remy Arden",
+      "approvedAt": "2024-12-18",
+      "effectiveAt": "2025-01-01",
+      "expiresAt": "2026-03-31",
+      "replacementId": "publishing-v2"
+    },
+    {
+      "id": "publishing-v2",
+      "familyId": "publishing",
+      "version": 2,
+      "text": "Our editors lead the selection, development, and publication of stories. Commercial relationships do not determine editorial conclusions.",
+      "status": "approved",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Nia Calder",
+      "approver": "Remy Arden",
+      "approvedAt": "2025-08-25",
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "publishing-v3",
+      "familyId": "publishing",
+      "version": 3,
+      "text": "Meridian Signal Group’s editorial teams are reviewing an updated set of publication standards.",
+      "status": "draft",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Nia Calder",
+      "approver": null,
+      "approvedAt": null,
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "podcasts-v1",
+      "familyId": "podcasts",
+      "version": 1,
+      "text": "Meridian Signal Group works with podcast creators to bring distinctive perspectives and carefully produced stories to listeners.",
+      "status": "approved",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Arlo Penn",
+      "approver": "Remy Arden",
+      "approvedAt": "2024-12-18",
+      "effectiveAt": "2025-01-01",
+      "expiresAt": "2025-06-30"
+    },
+    {
+      "id": "podcasts-v2",
+      "familyId": "podcasts",
+      "version": 2,
+      "text": "Our podcast portfolio gives original voices room to explore ideas through thoughtful conversations and distinctive storytelling.",
+      "status": "approved",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Arlo Penn",
+      "approver": "Remy Arden",
+      "approvedAt": "2025-08-25",
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "podcasts-v3",
+      "familyId": "podcasts",
+      "version": 3,
+      "text": "Meridian Signal Group plans to expand its podcast development programme with a new group of creators.",
+      "status": "approved",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Arlo Penn",
+      "approver": "Remy Arden",
+      "approvedAt": "2025-08-25",
+      "effectiveAt": "2025-11-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "events-v1",
+      "familyId": "events",
+      "version": 1,
+      "text": "Meridian Signal Group’s live events bring creators and audiences together for conversations, performances, and shared experiences.",
+      "status": "approved",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "emea"
+      ],
+      "owner": "Leah Orin",
+      "approver": "Remy Arden",
+      "approvedAt": "2024-12-18",
+      "effectiveAt": "2025-01-01",
+      "expiresAt": "2025-06-30"
+    },
+    {
+      "id": "events-v2",
+      "familyId": "events",
+      "version": 2,
+      "text": "Our EMEA live events programme brings creators and audiences together for thoughtfully produced conversations and performances. Each event publishes its own access and attendance information.",
+      "status": "approved",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "emea"
+      ],
+      "owner": "Leah Orin",
+      "approver": "Remy Arden",
+      "approvedAt": "2025-08-25",
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "events-v3",
+      "familyId": "events",
+      "version": 3,
+      "text": "Our Americas live events programme connects audiences with creators through conversations and performances. Each event publishes its own access and attendance information.",
+      "status": "approved",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "americas"
+      ],
+      "owner": "Leah Orin",
+      "approver": "Remy Arden",
+      "approvedAt": "2025-08-25",
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "partnerships-v1",
+      "familyId": "partnerships",
+      "version": 1,
+      "text": "Meridian Signal Group develops partnerships around shared creative goals and a clear understanding of each partner’s responsibilities.",
+      "status": "approved",
+      "audiences": [
+        "partners"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Ellis Rowan",
+      "approver": "Remy Arden",
+      "approvedAt": "2024-12-18",
+      "effectiveAt": "2025-01-01",
+      "expiresAt": "2025-06-30"
+    },
+    {
+      "id": "partnerships-v2",
+      "familyId": "partnerships",
+      "version": 2,
+      "text": "We work with partners to develop distinctive experiences, agreeing the purpose, responsibilities, and permitted uses of each collaboration before launch.",
+      "status": "approved",
+      "audiences": [
+        "partners"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Ellis Rowan",
+      "approver": "Remy Arden",
+      "approvedAt": "2025-08-25",
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "partnerships-v3",
+      "familyId": "partnerships",
+      "version": 3,
+      "text": "Meridian Signal Group is preparing a revised partnership framework for future creative collaborations.",
+      "status": "draft",
+      "audiences": [
+        "partners"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Ellis Rowan",
+      "approver": null,
+      "approvedAt": null,
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "workplace-v1",
+      "familyId": "workplace",
+      "version": 1,
+      "text": "Meridian Signal Group supports colleagues through clear working agreements and regular conversations with their teams.",
+      "status": "approved",
+      "audiences": [
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Tessa Vale",
+      "approver": "Remy Arden",
+      "approvedAt": "2024-12-18",
+      "effectiveAt": "2025-01-01",
+      "expiresAt": "2025-06-30"
+    },
+    {
+      "id": "workplace-v2",
+      "familyId": "workplace",
+      "version": 2,
+      "text": "Our teams use shared working agreements to support focused work, collaboration, and flexibility. Colleagues can discuss individual arrangements with their team lead.",
+      "status": "approved",
+      "audiences": [
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Tessa Vale",
+      "approver": "Remy Arden",
+      "approvedAt": "2025-08-25",
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "workplace-v3",
+      "familyId": "workplace",
+      "version": 3,
+      "text": "We are reviewing how team working agreements can better support collaboration across our creative portfolio.",
+      "status": "draft",
+      "audiences": [
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Tessa Vale",
+      "approver": null,
+      "approvedAt": null,
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "sustainability-v1",
+      "familyId": "sustainability",
+      "version": 1,
+      "text": "Meridian Signal Group is reviewing how production teams can reduce avoidable resource use while maintaining creative quality.",
+      "status": "approved",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Jules Maren",
+      "approver": "Remy Arden",
+      "approvedAt": "2024-12-18",
+      "effectiveAt": "2025-01-01",
+      "expiresAt": "2025-06-30"
+    },
+    {
+      "id": "sustainability-v2",
+      "familyId": "sustainability",
+      "version": 2,
+      "text": "Our production teams are testing practical ways to use materials more carefully and reduce avoidable travel. We will describe results when the review is complete.",
+      "status": "withdrawn",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Jules Maren",
+      "approver": "Remy Arden",
+      "approvedAt": "2025-08-25",
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    },
+    {
+      "id": "sustainability-v3",
+      "familyId": "sustainability",
+      "version": 3,
+      "text": "Meridian Signal Group is developing updated guidance on resource use in production. This wording remains under review.",
+      "status": "draft",
+      "audiences": [
+        "press",
+        "partners",
+        "employees"
+      ],
+      "regions": [
+        "global"
+      ],
+      "owner": "Jules Maren",
+      "approver": null,
+      "approvedAt": null,
+      "effectiveAt": "2025-09-01",
+      "expiresAt": "2026-03-31"
+    }
+  ]
+}
