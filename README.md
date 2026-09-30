@@ -51,7 +51,7 @@ Automated axe checks and keyboard/browser tests cover core pages. They do not re
 
 ## Deployment
 
-Vercel project **ready-to-say**, team **Andy-Protogen** (`andy-protogen`), uses Vite, `npm ci`, `npm run build`, output `dist`, and Node 22. The intended production branch is `main`. `vercel.json` supplies history-route fallbacks for direct statement URLs and refreshes. See [docs/PROGRESS.md](docs/PROGRESS.md) for the verified Git connection and final deployment status.
+Vercel project **ready-to-say**, team **Andy-Protogen** (`andy-protogen`), uses Vite, `npm ci`, `npm run build`, output `dist`, and Node 22. GitHub is connected and pushes to the production branch `main` deploy automatically. `vercel.json` supplies history-route fallbacks for direct statement URLs and refreshes. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for the passing local, CI and deployed-browser checks.
 
 No runtime secrets or environment variables are required. `.env*`, `.vercel/`, dependencies, and browser artifacts are ignored. The GitHub workflow builds and verifies pushes and pull requests. Manual publication, when needed: `npx vercel deploy --prod --scope andy-protogen` after linking the intended project.
 
