@@ -181,7 +181,10 @@ function doReset() {
       <div class="shell vs-shell">
         <a :href="`#main-${pageId}`" class="skip vs-skip">Skip to content</a>
         <header class="header">
-          <RouterLink to="/" class="brand-link"><VesperBrand product="Verbatim" /></RouterLink>
+          <RouterLink to="/" class="brand-link" aria-label="Verbatim home">
+            <VesperBrand />
+            <span class="product-name">Verbatim</span>
+          </RouterLink>
           <VesperBadge tone="neutral" class="demo-tag">Fictional demo</VesperBadge>
         </header>
         <nav class="nav vs-tabs" aria-label="Main">

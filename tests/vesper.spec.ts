@@ -45,7 +45,7 @@ async function contentFits(page: Page) {
 }
 async function labelsFit(page: Page) {
   const clipped = await visible(page)
-    .locator('.vs-field label, .vs-button, .vs-brand__product, .nav a')
+    .locator('.vs-field label, .vs-button, .product-name, .nav a')
     .evaluateAll((elements) =>
       elements.flatMap((element) => {
         const box = element.getBoundingClientRect();
@@ -78,7 +78,7 @@ test('Vesper light mobile foundation and shared parent brand load', async ({ pag
   await expect(page.locator('body')).toHaveClass(/vs-root/);
   await expect(visible(page).locator('.vs-brand__name')).toHaveText('VESPER');
   await expect(visible(page).locator('.vs-brand__descriptor')).toHaveText('MEDIA GROUP');
-  await expect(visible(page).locator('.vs-brand__product')).toHaveText('Verbatim');
+  await expect(visible(page).locator('.product-name')).toHaveText('Verbatim');
   expect(
     await visible(page)
       .locator('.vs-brand__mark')

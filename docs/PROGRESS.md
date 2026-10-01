@@ -1,5 +1,11 @@
 # Verbatim / Vesper UI 2.0.0 — 2026-09-30
 
+## Product lockup refinement — 2026-10-01
+
+- Kept the vendored Vesper parent mark and wordmark, but moved Verbatim out of the component's small third line. A separate Caslon product name now sits beside the parent identity, divided by a subtle rule; mobile spacing and type scale down for narrow widths.
+- The home link has an explicit accessible name. Statement data, eligibility, copy, storage, routing, demo date and deployment configuration are unchanged.
+- No new publication blocker. The existing production domain and historical branch deployment exclusion remain in place.
+
 ## Documentation sweep — 2026-09-30
 
 Refreshed README onboarding, workflows, setup, project structure and dated verification context. Corrected current branding guidance and explicitly marked superseded planning/migration records as historical. Vesper UI 2.0.0 remains the vendored dependency; runtime source and package manifests contain no Meridian references. Historical screenshots, branch deployment exclusions and compatibility storage keys are preserved.

@@ -1,5 +1,11 @@
 # Verbatim / Vesper UI 2.0.0 verification — 2026-09-30
 
+## Product lockup refinement — 2026-10-01
+
+The header now gives Verbatim a distinct display treatment beside the unchanged Vesper parent identity. Local production-preview screenshots at 320×640, 390×844 and 1440×1000 were visually inspected: the lockup is legible, the fictional-demo badge wraps below it on narrow screens, and navigation remains clear. The first browser run found display-font clipping at 200% root text size; increasing the name's line height fixed it.
+
+Validation after the fix: 18/18 unit tests, production build, 60/60 browser tests and formatting passed. Browser tests retain layout, 200% text, accessibility and copy-flow coverage. The screenshot review used emulated Chrome viewports; physical-device and screen-reader limits below still apply. The existing domain/routing blocker below is unchanged.
+
 ## Documentation sweep — 2026-09-30
 
 Refreshed README onboarding, workflows, setup, project structure and dated verification context. Corrected current branding guidance and explicitly marked superseded planning/migration records as historical. Vesper UI 2.0.0 remains the vendored dependency; runtime source and package manifests contain no Meridian references. Historical screenshots, branch deployment exclusions and compatibility storage keys are preserved.
