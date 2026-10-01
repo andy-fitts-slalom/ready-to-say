@@ -1,3 +1,11 @@
+# Main merge authorization — 2026-09-30
+
+The user explicitly requested merging the branch commits into main so the complete history is visible there. Main was fast-forwarded to include `5362801`, `9d1192c` and `74ec84e` without squashing or rewriting them. This supersedes the earlier main-push restriction below. No application code changed during this merge; the recorded 18 unit and 52 browser tests apply to the same code. Existing unrelated `.DS_Store` files remain untouched.
+
+Main retains its connected Vercel automatic deployment; the refactor branch exclusion does not disable main. Deployment verification from the original release must not be mistaken for verification of this newly triggered deployment.
+
+---
+
 # Meridian UI 1.0.0 migration — 2026-09-30
 
 ## Current instructions and baseline

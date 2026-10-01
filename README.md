@@ -1,6 +1,6 @@
 # Ready to Say
 
-> **Current refactor branch:** Meridian UI 1.0.0 migration is reviewable on `refactor/meridian-ui-1.0.0`. It has not been deployed. The live URL below remains the original release. Refactor-branch deployments are disabled; do not merge/push main or publish without a separate request. See [current verification](docs/VERIFICATION.md).
+> **Meridian UI 1.0.0:** The three refactor commits were merged into `main` without squashing on September 30, 2026, at the user's request. Main retains its connected automatic production deployment. See [verification evidence](docs/VERIFICATION.md) and [progress](docs/PROGRESS.md).
 
 A mobile-first statement library for **Meridian Signal Group**, an entirely fictional organization. Find wording, verify approval and permitted use, then copy the exact eligible statement.
 
