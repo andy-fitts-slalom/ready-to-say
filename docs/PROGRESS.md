@@ -1,3 +1,25 @@
+# Meridian UI 1.0.0 migration — 2026-09-30
+
+## Current instructions and baseline
+
+- Working checkout relocated to `Protogen/p-case-studies/p303-mobile`; shared release found at sibling `meridian-design-system`.
+- Starting commit: `21c16f7`, `main` tracking `origin/main`. Existing unrelated untracked files `.DS_Store` and `src/.DS_Store` are preserved and excluded from commits.
+- Baseline: 18 unit tests passed, production build passed (existing Ionic chunk-size warning), 32 browser tests passed in 21.9s, formatting passed.
+- User authorized shared parent branding/UI only. Domain code, records, local persistence and framework remain local and independent.
+- Later user instruction authorizes discrete GitHub commits. Work is on `refactor/meridian-ui-1.0.0`; never push `main` or deploy this refactor. `vercel.json` disables Git deployment for this branch only using Vercel's documented `git.deploymentEnabled` map.
+- Versioned release is copied into `vendor/meridian-ui-1.0.0.tgz` and installed from that portable file, not a sibling dependency.
+- Baseline phone screenshots are in `docs/screenshots/meridian-1.0.0/`.
+
+## Planned reviewable milestones
+
+1. Baseline, portable release and non-deploying branch setup.
+2. Parent identity, shared foundations, controls/statuses and all application states.
+3. Interaction/layout regression checks, visual evidence and final continuation notes.
+
+The publication instructions below describe the original delivery only. They do not authorize deployment of this migration.
+
+---
+
 # Progress — 2026-09-30
 
 ## Planning
