@@ -84,6 +84,7 @@ const readyCount = computed(
     results.value.filter((item) => item.version && eligibility(item.version, state.scope).eligible)
       .length,
 );
+const capitalize = (value: string) => value.charAt(0).toUpperCase() + value.slice(1);
 const requestHeading = ref<HTMLElement>();
 const notice = ref('');
 const feedbackKind = ref<'copy' | 'request' | 'reset' | ''>('');
@@ -287,8 +288,8 @@ function doReset() {
               <p class="result-count vs-muted">
                 <strong>{{ readyCount }} ready for your use</strong
                 ><span
-                  >{{ results.length }} statements · {{ state.scope.audience }} ·
-                  {{ state.scope.region }}</span
+                  >{{ results.length }} statements · {{ capitalize(state.scope.audience) }} ·
+                  {{ capitalize(state.scope.region) }}</span
                 >
               </p>
             </div>
