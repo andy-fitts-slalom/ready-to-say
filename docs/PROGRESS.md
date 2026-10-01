@@ -10,6 +10,17 @@
 - Versioned release is copied into `vendor/meridian-ui-1.0.0.tgz` and installed from that portable file, not a sibling dependency.
 - Baseline phone screenshots are in `docs/screenshots/meridian-1.0.0/`.
 
+## UI migration checkpoint
+
+- Foundation checkpoint `5362801` pushed to the dedicated refactor branch. Vercel branch deployment is disabled; main is untouched.
+- Imported Ionic core first, shared fonts/styles and Ionic adapter next, application composition last. HTML uses light/mobile and body has `ms-root`.
+- Replaced the quotation-mark identity with shipped `MeridianBrand` and favicon. Fontsource dependencies removed; release fonts and preserved OFL notices are served locally.
+- Migrated fields, buttons, badges, notices and empty states to shared primitives. Replaced Unicode action/status symbols with Ionicons. Retained real native select/input semantics, per-page IDs, Ionic routing/caching and view-entry focus.
+- Replaced the legacy stylesheet rather than layering color overrides. Local CSS now owns composition using semantic tokens, readable labels, 48px controls and responsive layout.
+- Copy feedback flows inside the action bar, rather than obscuring it. The action bar becomes static while a request/manual-copy field is open or the viewport is short. One persistent live region announces action results.
+- Dataset, domain eligibility and storage implementation are unchanged. Presentation maps the full context-dependent eligibility result to shared status tones.
+- UI checkpoint: 18 unit tests, build, unchanged 32 browser tests (16.9s) passed. Phone and desktop rendered library inspected. Additional migration-specific regressions and visual evidence are in progress.
+
 ## Planned reviewable milestones
 
 1. Baseline, portable release and non-deploying branch setup.

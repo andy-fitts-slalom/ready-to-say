@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch, nextTick, useId } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { IonPage, IonContent, onIonViewDidEnter } from '@ionic/vue';
+import { IonPage, IonContent, IonIcon, onIonViewDidEnter } from '@ionic/vue';
 import {
   audiences,
   regions,
@@ -11,6 +11,25 @@ import {
   eligibility,
   selectVersion,
 } from './domain/eligibility';
+import {
+  MeridianBrand,
+  MeridianButton,
+  MeridianBadge,
+  MeridianNotice,
+  MeridianField,
+  MeridianEmpty,
+} from '@meridian/ui/vue';
+import {
+  checkmarkCircleOutline,
+  alertCircleOutline,
+  timeOutline,
+  arrowForwardOutline,
+  arrowBackOutline,
+  copyOutline,
+  searchOutline,
+  shieldCheckmarkOutline,
+} from 'ionicons/icons';
+import type { StatementVersion } from './domain/types';
 import { state, persist, reset } from './state';
 const route = useRoute();
 const router = useRouter();
@@ -67,6 +86,7 @@ const readyCount = computed(
 );
 const requestHeading = ref<HTMLElement>();
 const notice = ref('');
+const feedbackKind = ref<'copy' | 'request' | 'reset' | ''>('');
 const manual = ref(false);
 const manualText = ref<HTMLTextAreaElement>();
 const form = ref(false);
@@ -84,21 +104,25 @@ watch(
   },
 );
 const link = (id: string) => ({ path: `/statements/${id}`, query: route.query });
-function status(id: string) {
-  const v = versions.find((v) => v.id === id)!;
-  return eligibility(v, state.scope).eligible
-    ? 'Ready to use'
-    : v.status === 'draft'
-      ? 'Draft · not approved'
-      : v.status === 'withdrawn'
-        ? 'Withdrawn'
-        : v.expiresAt < DEMO_DATE
-          ? 'Expired'
-          : eligibility(v, state.scope).replacement
-            ? 'Replaced'
-            : 'Not for this use';
+// Presentation only; eligibility remains the domain authority for every selected scope.
+function presentation(v: StatementVersion) {
+  const result = eligibility(v, state.scope);
+  if (result.eligible)
+    return { label: 'Ready to use', tone: 'success' as const, icon: checkmarkCircleOutline };
+  if (v.status === 'draft')
+    return { label: 'Draft · not approved', tone: 'warning' as const, icon: alertCircleOutline };
+  if (v.status === 'withdrawn')
+    return { label: 'Withdrawn', tone: 'danger' as const, icon: alertCircleOutline };
+  if (v.expiresAt < DEMO_DATE)
+    return { label: 'Expired', tone: 'danger' as const, icon: timeOutline };
+  if (result.replacement)
+    return { label: 'Replaced', tone: 'neutral' as const, icon: arrowForwardOutline };
+  if (v.effectiveAt > DEMO_DATE)
+    return { label: 'Not yet effective', tone: 'warning' as const, icon: timeOutline };
+  return { label: 'Not for this use', tone: 'warning' as const, icon: alertCircleOutline };
 }
 async function copy() {
+  feedbackKind.value = 'copy';
   const version = current.value;
   if (!version || !eligibility(version, state.scope).eligible) {
     notice.value = 'Copy unavailable for this wording and selected use.';
@@ -126,6 +150,7 @@ async function openRequest() {
   requestHeading.value?.scrollIntoView({ block: 'start' });
 }
 function saveRequest() {
+  feedbackKind.value = 'request';
   if (!reason.value.trim()) {
     error.value = 'Enter a reason for your request.';
     return;
@@ -144,140 +169,187 @@ function saveRequest() {
     : 'Demo request added for this session only. No one was notified.';
 }
 function doReset() {
+  feedbackKind.value = 'reset';
   reset();
   confirmingReset.value = false;
   notice.value = 'Demo reset. Preferences and local requests restored to their starting state.';
 }
 </script>
 <template>
-  <IonPage
-    ><IonContent role="presentation"
-      ><div class="shell">
-        <a :href="`#main-${pageId}`" class="skip">Skip to content</a>
+  <IonPage>
+    <IonContent role="presentation">
+      <div class="shell ms-shell">
+        <a :href="`#main-${pageId}`" class="skip ms-skip">Skip to content</a>
         <header class="header">
-          <RouterLink to="/" class="brand"
-            ><span class="brand-icon" aria-hidden="true">“</span
-            ><span>Ready to Say<small>MERIDIAN SIGNAL GROUP</small></span></RouterLink
-          ><span class="demo-tag">FICTIONAL DEMO</span>
+          <RouterLink to="/" class="brand-link"
+            ><MeridianBrand product="Ready to Say"
+          /></RouterLink>
+          <MeridianBadge tone="neutral" class="demo-tag">Fictional demo</MeridianBadge>
         </header>
-        <nav class="nav" aria-label="Main">
+        <nav class="nav ms-tabs" aria-label="Main">
           <RouterLink to="/" :aria-current="route.path === '/' ? 'page' : undefined"
             >Statement library</RouterLink
-          ><RouterLink
-            to="/requests"
-            :aria-current="route.path === '/requests' ? 'page' : undefined"
+          >
+          <RouterLink to="/requests" :aria-current="route.path === '/requests' ? 'page' : undefined"
             >Local requests
-            <span v-if="state.requests.length">{{ state.requests.length }}</span></RouterLink
-          ><RouterLink to="/demo" :aria-current="route.path === '/demo' ? 'page' : undefined"
+            <MeridianBadge v-if="state.requests.length">{{
+              state.requests.length
+            }}</MeridianBadge></RouterLink
+          >
+          <RouterLink to="/demo" :aria-current="route.path === '/demo' ? 'page' : undefined"
             >Demo info</RouterLink
           >
         </nav>
         <main :id="`main-${pageId}`" ref="mainContent" tabindex="-1">
-          <div v-if="state.storageError" class="alert" role="alert">{{ state.storageError }}</div>
+          <MeridianNotice
+            v-if="state.storageError"
+            title="Local storage"
+            tone="warning"
+            announcement="assertive"
+            class="storage-notice"
+            >{{ state.storageError }}</MeridianNotice
+          >
           <section
             v-if="route.path === '/' || detail || route.path === '/requests'"
-            class="scope"
+            class="scope ms-surface"
             aria-label="Intended use"
           >
             <div class="scope-intro">
-              <span class="eyebrow">YOUR INTENDED USE</span><span>Check wording for</span>
+              <span class="ms-eyebrow">Your intended use</span><span>Check wording for</span>
             </div>
-            <label
-              >Audience<select v-model="state.scope.audience">
+            <MeridianField label="Audience" v-slot="field">
+              <select
+                v-model="state.scope.audience"
+                class="ms-input"
+                :id="field.id"
+                :aria-describedby="field.describedby"
+                :aria-invalid="field.invalid"
+                :required="field.required"
+              >
                 <option v-for="a in audiences" :key="a" :value="a">{{ a }}</option>
-              </select></label
-            ><label
-              >Region<select v-model="state.scope.region">
+              </select>
+            </MeridianField>
+            <MeridianField label="Region" v-slot="field">
+              <select
+                v-model="state.scope.region"
+                class="ms-input"
+                :id="field.id"
+                :aria-describedby="field.describedby"
+                :aria-invalid="field.invalid"
+                :required="field.required"
+              >
                 <option v-for="r in regions" :key="r" :value="r">
                   {{ r === 'global' ? 'Global / all regions' : r.toUpperCase() }}
                 </option>
-              </select></label
-            >
+              </select>
+            </MeridianField>
           </section>
           <template v-if="route.path === '/'">
             <section class="intro">
-              <span class="eyebrow">THE STATEMENT LIBRARY</span>
-              <h1>The right words.<br /><em>Ready when you are.</em></h1>
-              <p>Find a statement. Check its permitted use.<br />Copy with confidence.</p>
+              <span class="ms-eyebrow">The statement library</span>
+              <h1 class="ms-display">The right words.<br /><em>Ready when you are.</em></h1>
+              <p class="ms-muted">
+                Find a statement. Check its permitted use.<br />Copy with confidence.
+              </p>
             </section>
-            <div class="search-wrap">
-              <span aria-hidden="true">⌕</span
-              ><input
-                v-model="search"
-                aria-label="Search statements"
-                type="search"
-                placeholder="Search a topic, title or phrase…"
-              /><kbd aria-hidden="true">SEARCH</kbd>
-            </div>
+            <MeridianField label="Search statements" :id="`search-${pageId}`" v-slot="field">
+              <div class="search-wrap">
+                <IonIcon :icon="searchOutline" aria-hidden="true" /><input
+                  v-model="search"
+                  type="search"
+                  class="ms-input"
+                  :id="field.id"
+                  :aria-describedby="field.describedby"
+                  :aria-invalid="field.invalid"
+                  :required="field.required"
+                  placeholder="Search a topic, title or phrase…"
+                />
+              </div>
+            </MeridianField>
             <div class="filter-row">
-              <label
-                >Topic<select v-model="topic">
+              <MeridianField label="Topic" v-slot="field"
+                ><select
+                  v-model="topic"
+                  class="ms-input"
+                  :id="field.id"
+                  :aria-describedby="field.describedby"
+                  :aria-invalid="field.invalid"
+                  :required="field.required"
+                >
                   <option value="">All topics</option>
                   <option v-for="f in families" :key="f.id" :value="f.topic">{{ f.topic }}</option>
-                </select></label
-              ><span
-                >{{ results.length }} statements <span aria-hidden="true">·</span>
-                {{ readyCount }} ready for your use</span
+                </select></MeridianField
               >
+              <p class="result-count ms-muted">
+                <strong>{{ readyCount }} ready for your use</strong
+                ><span
+                  >{{ results.length }} statements · {{ state.scope.audience }} ·
+                  {{ state.scope.region }}</span
+                >
+              </p>
             </div>
-            <div v-if="!results.length" class="empty">
-              <span class="empty-icon" aria-hidden="true">⌕</span>
-              <h2>No matching statements</h2>
-              <p>Try a broader phrase or clear your search and topic filter.</p>
-              <button class="secondary" @click="router.replace('/')">Clear filters</button
-              ><button class="text-button" @click="openRequest">Request wording</button>
-            </div>
+            <MeridianEmpty
+              v-if="!results.length"
+              title="No matching statements"
+              description="Try a broader phrase or clear your search and topic filter."
+              ><MeridianButton variant="secondary" @click="router.replace('/')"
+                >Clear filters</MeridianButton
+              ><MeridianButton variant="quiet" @click="openRequest"
+                >Request wording</MeridianButton
+              ></MeridianEmpty
+            >
             <div class="cards">
               <RouterLink
                 v-for="item in results"
                 :key="item.family.id"
                 :to="link(item.version!.id)"
-                class="card"
-                ><div class="card-top">
-                  <span class="eyebrow">{{ item.family.topic }}</span
-                  ><span
-                    class="badge"
-                    :class="{ ready: eligibility(item.version!, state.scope).eligible }"
-                    ><span aria-hidden="true">{{
-                      eligibility(item.version!, state.scope).eligible ? '✓' : '!'
-                    }}</span>
-                    {{ status(item.version!.id) }}</span
+                class="card ms-surface"
+              >
+                <div class="card-top">
+                  <span class="ms-eyebrow">{{ item.family.topic }}</span
+                  ><MeridianBadge :tone="presentation(item.version!).tone"
+                    ><IonIcon :icon="presentation(item.version!).icon" aria-hidden="true" />{{
+                      presentation(item.version!).label
+                    }}</MeridianBadge
                   >
                 </div>
                 <h2>{{ item.family.title }}</h2>
-                <p>{{ item.family.description }}</p>
+                <p class="ms-muted">{{ item.family.description }}</p>
                 <div class="card-bottom">
                   <span
-                    >Version {{ item.version!.version }} <span aria-hidden="true">·</span>
-                    {{ item.version!.regions.join(', ') }} ·
+                    >Version {{ item.version!.version }} · {{ item.version!.regions.join(', ') }} ·
                     {{ item.version!.audiences.join(', ') }}</span
-                  ><span class="arrow" aria-hidden="true">↗</span>
-                </div></RouterLink
-              >
+                  ><IonIcon :icon="arrowForwardOutline" aria-hidden="true" />
+                </div>
+              </RouterLink>
             </div>
-            <aside class="footnote">
-              <span aria-hidden="true">◈</span> Approval is specific to your audience and region.
-              Always check the details before sharing.
+            <aside class="footnote ms-muted">
+              <IonIcon :icon="shieldCheckmarkOutline" aria-hidden="true" />Approval is specific to
+              your audience and region. Always check the details before sharing.
             </aside>
           </template>
           <template v-else-if="detail && current && family">
-            <RouterLink class="back" :to="{ path: '/', query: route.query }"
-              >← Back to library</RouterLink
+            <RouterLink
+              class="back ms-button ms-button--quiet"
+              :to="{ path: '/', query: route.query }"
+              ><IonIcon :icon="arrowBackOutline" aria-hidden="true" />Back to library</RouterLink
             >
             <div class="detail-heading">
-              <span class="eyebrow">{{ family.topic }}</span>
-              <h1>{{ family.title }}</h1>
-              <p>{{ family.description }}</p>
+              <span class="ms-eyebrow">{{ family.topic }}</span>
+              <h1 class="ms-display">{{ family.title }}</h1>
+              <p class="ms-muted">{{ family.description }}</p>
             </div>
             <div class="detail-grid">
-              <section class="wording-panel">
+              <section class="wording-panel ms-surface" aria-label="Statement wording">
                 <div class="card-top">
-                  <span class="eyebrow">EXACT STATEMENT · V{{ current.version }}</span
-                  ><span class="badge" :class="{ ready: verdict?.eligible }"
-                    >{{ verdict?.eligible ? '✓ ' : '! ' }}{{ status(current.id) }}</span
+                  <span class="ms-eyebrow">Exact statement · V{{ current.version }}</span
+                  ><MeridianBadge :tone="presentation(current).tone"
+                    ><IonIcon :icon="presentation(current).icon" aria-hidden="true" />{{
+                      presentation(current).label
+                    }}</MeridianBadge
                   >
                 </div>
-                <blockquote>{{ current.text }}</blockquote>
+                <blockquote class="ms-quote">{{ current.text }}</blockquote>
                 <div class="conditions">
                   <strong>Permitted use</strong>
                   <p>
@@ -288,35 +360,73 @@ function doReset() {
                     Global wording can be used in each listed audience across all regions.
                   </p>
                 </div>
-                <div v-if="!verdict?.eligible" class="alert">
-                  <strong>Copy unavailable</strong>
+                <MeridianNotice
+                  v-if="!verdict?.eligible"
+                  title="Copy unavailable"
+                  :tone="presentation(current).tone"
+                  class="alert"
+                >
                   <ul>
                     <li v-for="r in verdict?.reasons" :key="r">{{ r }}</li>
                   </ul>
-                  <RouterLink v-if="verdict?.replacement" :to="link(verdict.replacement.id)"
-                    >Open approved replacement →</RouterLink
-                  ><RouterLink v-else-if="alternative" :to="link(alternative.id)"
-                    >Open current approved wording →</RouterLink
-                  ><button class="text-button" @click="openRequest">Request updated wording</button>
-                </div>
-                <div v-if="manual && verdict?.eligible" class="manual">
-                  <label :for="`manual-text-${pageId}`">Select and copy exact wording</label
-                  ><textarea
-                    :id="`manual-text-${pageId}`"
+                  <template #actions>
+                    <RouterLink
+                      v-if="verdict?.replacement"
+                      class="ms-button ms-button--secondary"
+                      :to="link(verdict.replacement.id)"
+                      >Open approved replacement<IonIcon
+                        :icon="arrowForwardOutline"
+                        aria-hidden="true"
+                    /></RouterLink>
+                    <RouterLink
+                      v-else-if="alternative"
+                      class="ms-button ms-button--secondary"
+                      :to="link(alternative.id)"
+                      >Open current approved wording<IonIcon
+                        :icon="arrowForwardOutline"
+                        aria-hidden="true"
+                    /></RouterLink>
+                    <MeridianButton variant="quiet" @click="openRequest"
+                      >Request updated wording</MeridianButton
+                    >
+                  </template>
+                </MeridianNotice>
+                <MeridianField
+                  v-if="manual && verdict?.eligible"
+                  label="Select and copy exact wording"
+                  :id="`manual-${pageId}`"
+                  hint="The text is unchanged. Use your device’s Copy command."
+                  class="manual"
+                  v-slot="field"
+                >
+                  <textarea
                     ref="manualText"
                     readonly
                     :value="current.text"
+                    class="ms-input"
+                    :id="field.id"
+                    :aria-describedby="field.describedby"
+                    :aria-invalid="field.invalid"
+                    :required="field.required"
                     @focus="($event.target as HTMLTextAreaElement).select()"
                   />
-                </div>
-                <div class="copy-bar">
-                  <button class="primary" :disabled="!verdict?.eligible" @click="copy">
-                    {{ verdict?.eligible ? 'Copy exact wording' : 'Copy unavailable' }}
-                    <span aria-hidden="true">▣</span></button
-                  ><small>Approval checked against the fixed demo date.</small>
+                </MeridianField>
+                <div class="copy-bar ms-action-bar" :class="{ 'is-static': manual || form }">
+                  <MeridianButton :disabled="!verdict?.eligible" @click="copy"
+                    >{{ verdict?.eligible ? 'Copy exact wording' : 'Copy unavailable'
+                    }}<IonIcon :icon="copyOutline" aria-hidden="true"
+                  /></MeridianButton>
+                  <small class="ms-muted">Approval checked against the fixed demo date.</small>
+                  <MeridianNotice
+                    v-if="notice && feedbackKind === 'copy'"
+                    :title="notice"
+                    tone="info"
+                    aria-hidden="true"
+                    class="notice"
+                  />
                 </div>
               </section>
-              <aside class="metadata">
+              <aside class="metadata ms-surface">
                 <h2>Approval record</h2>
                 <dl>
                   <dt>Status</dt>
@@ -332,50 +442,58 @@ function doReset() {
                   <dt>Valid through</dt>
                   <dd>{{ current.expiresAt }}</dd>
                 </dl>
-                <label
-                  >View version<select
+                <MeridianField label="View version" v-slot="field"
+                  ><select
                     :value="current.id"
+                    class="ms-input"
+                    :id="field.id"
+                    :aria-describedby="field.describedby"
+                    :aria-invalid="field.invalid"
+                    :required="field.required"
                     @change="router.push(link(($event.target as HTMLSelectElement).value))"
                   >
                     <option v-for="v in siblings" :key="v.id" :value="v.id">
-                      Version {{ v.version }} · {{ status(v.id) }}
+                      Version {{ v.version }} · {{ presentation(v).label }}
                     </option>
-                  </select></label
+                  </select></MeridianField
                 >
-                <p class="muted">A draft does not replace usable approved wording.</p>
+                <p class="version-help ms-muted">
+                  A draft does not replace usable approved wording.
+                </p>
               </aside>
             </div>
           </template>
-          <template v-else-if="route.path === '/requests'"
-            ><section class="intro">
-              <span class="eyebrow">BROWSER-LOCAL DEMONSTRATION</span>
-              <h1>Your requests</h1>
-              <p>Saved here, on this device. No messages are sent and no one is notified.</p>
-              <button class="primary" @click="openRequest">Request wording</button>
-            </section>
-            <div v-if="!state.requests.length" class="empty">
-              <h2>No local requests yet</h2>
-              <p>
-                When approved wording is unavailable, save a request to keep track of what you need.
+          <template v-else-if="route.path === '/requests'">
+            <section class="intro">
+              <span class="ms-eyebrow">Browser-local demonstration</span>
+              <h1 class="ms-display">Your requests</h1>
+              <p class="ms-muted">
+                Saved here, on this device. No messages are sent and no one is notified.
               </p>
-            </div>
-            <article v-for="r in state.requests" :key="r.id" class="request-card">
-              <span class="badge">Saved locally · demo</span>
+              <MeridianButton @click="openRequest">Request wording</MeridianButton>
+            </section>
+            <MeridianEmpty
+              v-if="!state.requests.length"
+              title="No local requests yet"
+              description="When approved wording is unavailable, save a request to keep track of what you need."
+            />
+            <article v-for="r in state.requests" :key="r.id" class="request-card ms-surface">
+              <MeridianBadge tone="info">Saved locally · demo</MeridianBadge>
               <h2>{{ r.topic }}</h2>
               <p>{{ r.reason }}</p>
-              <small
+              <small class="ms-muted"
                 >{{ r.scope.audience }} · {{ r.scope.region }} ·
                 {{ new Date(r.createdAt).toLocaleDateString() }}</small
               >
-            </article></template
-          >
-          <template v-else-if="route.path === '/demo'"
-            ><section class="intro">
-              <span class="eyebrow">A FICTIONAL WORKING PROTOTYPE</span>
-              <h1>About this demo</h1>
-              <p>Clear wording. Deliberate boundaries.</p>
+            </article>
+          </template>
+          <template v-else-if="route.path === '/demo'">
+            <section class="intro">
+              <span class="ms-eyebrow">A fictional working prototype</span>
+              <h1 class="ms-display">About this demo</h1>
+              <p class="ms-muted">Clear wording. Deliberate boundaries.</p>
             </section>
-            <section class="info-panel">
+            <section class="info-panel ms-surface">
               <h2>Fixed demonstration date</h2>
               <p>
                 <strong>{{ DEMO_DATE }}</strong> · Validity is evaluated on this date, including the
@@ -397,54 +515,98 @@ function doReset() {
                 Reset removes this demo’s local requests and restores Press / Global. The statement
                 library always uses the original seed data.
               </p>
-              <button class="secondary" @click="confirmingReset = true">Reset demo</button>
-              <div v-if="confirmingReset" class="alert">
-                <p>Remove all local demo requests and restore preferences?</p>
-                <button class="primary" @click="doReset">Yes, reset demo</button
-                ><button class="text-button" @click="confirmingReset = false">Cancel</button>
-              </div>
-            </section></template
-          >
-          <section v-else class="empty">
-            <h1>Statement unavailable</h1>
-            <p>This link does not match a statement in the demo library.</p>
-            <RouterLink class="primary" to="/">Return to library</RouterLink>
+              <MeridianButton variant="secondary" @click="confirmingReset = true"
+                >Reset demo</MeridianButton
+              >
+              <MeridianNotice
+                v-if="confirmingReset"
+                title="Reset local demo data?"
+                tone="warning"
+                class="reset-confirmation"
+                ><p>Remove all local demo requests and restore preferences?</p>
+                <template #actions
+                  ><MeridianButton variant="danger" @click="doReset">Yes, reset demo</MeridianButton
+                  ><MeridianButton variant="quiet" @click="confirmingReset = false"
+                    >Cancel</MeridianButton
+                  ></template
+                ></MeridianNotice
+              >
+            </section>
+          </template>
+          <section v-else class="invalid-route">
+            <h1 class="ms-title">Statement unavailable</h1>
+            <MeridianEmpty
+              title="This link has no matching statement"
+              description="This link does not match a statement in the demo library."
+              ><RouterLink class="ms-button ms-button--primary" to="/"
+                >Return to library</RouterLink
+              ></MeridianEmpty
+            >
           </section>
-          <section v-if="form" class="request-form" :aria-labelledby="`request-heading-${pageId}`">
+          <section
+            v-if="form"
+            class="request-form ms-surface"
+            :aria-labelledby="`request-heading-${pageId}`"
+          >
             <h2 :id="`request-heading-${pageId}`" ref="requestHeading" tabindex="-1">
               Request updated wording
             </h2>
             <p>Local demo only. No one will be notified.</p>
             <form @submit.prevent="saveRequest" novalidate>
-              <label
-                >Topic<select v-model="requestTopic">
+              <MeridianField label="Topic" v-slot="field"
+                ><select
+                  v-model="requestTopic"
+                  class="ms-input"
+                  :id="field.id"
+                  :aria-describedby="field.describedby"
+                  :aria-invalid="field.invalid"
+                  :required="field.required"
+                >
                   <option v-for="f in families" :key="f.id">{{ f.topic }}</option>
-                </select></label
+                </select></MeridianField
               >
               <p>
                 Requested use:
                 <strong>{{ state.scope.audience }} · {{ state.scope.region }}</strong>
               </p>
-              <label :for="`reason-${pageId}`">Reason <span>(required)</span></label
-              ><textarea
+              <MeridianField
+                label="Reason"
                 :id="`reason-${pageId}`"
-                v-model="reason"
-                maxlength="1000"
-                :aria-invalid="!!error"
-                :aria-describedby="error ? `request-error-${pageId}` : undefined"
-                placeholder="What wording do you need, and why?"
-              />
-              <p v-if="error" :id="`request-error-${pageId}`" role="alert">{{ error }}</p>
-              <button type="submit" class="primary">Save local request</button
-              ><button type="button" class="text-button" @click="form = false">Cancel</button>
+                :error="error"
+                required
+                :role="error ? 'alert' : undefined"
+                v-slot="field"
+              >
+                <textarea
+                  v-model="reason"
+                  maxlength="1000"
+                  class="ms-input"
+                  :id="field.id"
+                  :aria-describedby="field.describedby"
+                  :aria-invalid="field.invalid"
+                  :required="field.required"
+                  placeholder="What wording do you need, and why?"
+                />
+              </MeridianField>
+              <div class="form-actions">
+                <MeridianButton type="submit">Save local request</MeridianButton
+                ><MeridianButton variant="quiet" @click="form = false">Cancel</MeridianButton>
+              </div>
             </form>
           </section>
-          <div class="notice" role="status" aria-live="polite" :class="{ visible: notice }">
-            {{ notice }}
-          </div>
+          <div role="status" aria-live="polite" class="ms-sr-only">{{ notice }}</div>
+          <MeridianNotice
+            v-if="notice && feedbackKind !== 'copy'"
+            :title="notice"
+            tone="info"
+            aria-hidden="true"
+            class="notice result-notice"
+          />
         </main>
-        <footer>MERIDIAN SIGNAL GROUP <span>Fictional content. Real clarity.</span></footer>
-      </div></IonContent
-    ></IonPage
-  >
+        <footer>
+          <span>Meridian Signal Group</span><span>Fictional content. Real clarity.</span>
+        </footer>
+      </div>
+    </IonContent>
+  </IonPage>
 </template>

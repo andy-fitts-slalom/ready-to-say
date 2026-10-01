@@ -2,7 +2,7 @@
 
 ## Boundaries
 
-This repository stands alone. All company context, people, statement wording and approval records were invented from BRIEF.md. No source vault, other case study, real client content or proprietary code was consulted.
+This repository builds and deploys independently. The September 30 Meridian UI migration intentionally shares parent branding and presentation through a vendored versioned package; no application data or domain code is shared. All company context, people, statement wording and approval records were invented from BRIEF.md. No source vault, other case study, real client content or proprietary code was consulted.
 
 ## Components and routing
 
@@ -24,8 +24,14 @@ Requests capture topic, selected scope, required trimmed reason, generated local
 
 ## Presentation
 
-Sage/green palette, clear textual status, spacious cards, serif statement typography, compact audience/region context and sticky copy action. Fonts are served from the same origin. Local licenses preserve their SIL notices and all installed runtime dependency notices. Reduced motion, focus handling and local form feedback support accessible use.
+Meridian UI 1.0.0 light/mobile tokens, the shipped parent M lockup, semantic status primitives, spacious cards, Georgia statement typography, audience/region context and safe-area copy action. Fonts are served from the same origin. Local licenses preserve their SIL notices and all installed runtime dependency notices. Reduced motion, focus handling and local form feedback support accessible use.
 
 ## Publication
 
 Git history records actual milestones, beginning after finding only the matching BRIEF.md. GitHub identity was verified with network-enabled access; sandbox-only auth checks had misleading failures. The repository was initially created private as requested, then made public after explicit user authorization. Vercel identity is andyfitts-4966; the sole available team was Andy-Protogen. No existing project or repository was overwritten.
+
+## Portable shared UI dependency
+
+`vendor/meridian-ui-1.0.0.tgz` is a byte-identical copy of the shared release (SHA-256 `867f3f8b38d3e45160964cd26fc1f527999c3876ad6c5253c4dcc9ac9cfd8123`). npm records the local tarball and integrity; no sibling path or symlink is used. `src/env.d.ts` provides Vite asset types for the release's SVG import. The public favicon is copied unmodified from the release's `assets/brand/meridian-mark.svg`. Font notices retain the release's original OFL terms.
+
+`Workspace.vue` owns all composition and state. The shared package supplies brand, native buttons, badges, fields, notices and empty-state presentation; eligibility remains in `src/domain`. The local presentation map uses the domain result for every current scope. One persistent status live region announces action results; corresponding visible notices have no duplicate announcement. Copy confirmation takes normal space below its button. Manual-copy and request editing disable sticky positioning to keep focused content clear.
