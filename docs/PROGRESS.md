@@ -1,5 +1,12 @@
 # Verbatim / Vesper UI 2.0.0 — 2026-09-30
 
+## Vesper UI 3.0 selected direction — 2026-10-01
+
+- Installed the independent `@vesper/ui` 3.0.0 tarball. Verbatim now uses the cool salt-flat reading canvas and Barlow Condensed display headings; the product-first wordmark and Vesper footer identity remain in place.
+- Increased wordmark line height after the 200% root-text browser check found clipping. Audience, region, search, eligibility, exact copy, local requests, routing and stored data remain unchanged.
+- Local checks: 18/18 unit tests, production build, 60/60 browser tests and Prettier format check passed. The first browser run exposed the wordmark clipping; the complete rerun passed after repair. Local server binding required sandbox escalation.
+- No new publication blocker. Existing production domain and branch deployment exclusion remain unchanged. Production verification is recorded after push. Earlier 2.0.0 sections below are historical.
+
 ## Wordmark cleanup — 2026-10-01
 
 - Removed the short rule under the Verbatim wordmark after visual feedback that it looked accidental. The product still leads the header, with the shared Vesper parent lockup in the footer.

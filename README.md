@@ -21,7 +21,7 @@ Built with Vue 3, TypeScript, Vite and Ionic Vue. Data and fonts ship with the a
 
 ## Run locally
 
-Vesper UI 2.0.0 supplies the shared presentation. Its release is checked into `vendor/vesper-ui-2.0.0.tgz` and installed from that file. A sibling folder or unpublished registry package is not needed.
+Vesper UI 3.0.0 supplies the shared presentation. Its release is checked into `vendor/vesper-ui-3.0.0.tgz` and installed from that file. A sibling folder or unpublished registry package is not needed.
 
 Use Node.js 22.12 or newer (Node 22 is used in CI and Vercel) and npm.
 

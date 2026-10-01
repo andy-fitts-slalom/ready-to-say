@@ -1,5 +1,12 @@
 # Verbatim / Vesper UI 2.0.0 verification — 2026-09-30
 
+## Vesper UI 3.0.0 — 2026-10-01
+
+- Portable `vendor/vesper-ui-3.0.0.tgz` installed; production bundle contains Barlow Condensed and the 35.9 kB salt-flat WebP.
+- `npm test`: 18/18; `npm run build`: passed; `npm run test:e2e`: 60/60; `npm run format:check`: passed. Initial local server binding required sandbox escalation.
+- Chrome desktop preview inspected the pale texture, clear forms and product wordmark. Browser coverage includes 320/390/768/1440px, 200% text size, accessibility basics, scope changes, safe-area copy action, storage failure and recovery.
+- The 200% text case initially found a clipped display wordmark; line-height 1.25 resolved it. Production status requires a separate post-push check. Prior verification below is historical.
+
 ## Wordmark cleanup — 2026-10-01
 
 The short petrol rule beneath the Verbatim wordmark was removed following visual feedback. The previous section documents the superseded treatment. Local production-preview screenshots at 320×640, 390×844 and 1440×1000 were visually inspected; the standalone wordmark, demo badge and navigation remain clear without horizontal overflow.

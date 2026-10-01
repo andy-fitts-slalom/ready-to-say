@@ -2,7 +2,7 @@
 
 ## Boundaries
 
-This repository builds and deploys independently. Vesper UI 2.0.0 shares parent branding and presentation through a vendored versioned package; no application data or domain code is shared. All company context, people, statement wording and approval records were invented from BRIEF.md. No source vault, other case study, real client content or proprietary code was consulted.
+This repository builds and deploys independently. Vesper UI 3.0.0 shares parent branding and presentation through a vendored versioned package; no application data or domain code is shared. All company context, people, statement wording and approval records were invented from BRIEF.md. No source vault, other case study, real client content or proprietary code was consulted.
 
 ## Components and routing
 
@@ -24,7 +24,7 @@ Requests capture topic, selected scope, required trimmed reason, generated local
 
 ## Presentation
 
-Vesper UI 2.0.0 light/mobile tokens, the shipped V-and-star lockup, semantic status primitives, spacious cards, Georgia statement typography, audience/region context and safe-area copy action. Fonts are served from the same origin. Local licenses preserve their SIL notices and all installed runtime dependency notices. Reduced motion, focus handling and local form feedback support accessible use.
+Vesper UI 3.0.0 light/mobile tokens, the shipped V-and-star lockup, semantic status primitives, spacious cards, Georgia statement typography, audience/region context and safe-area copy action. Fonts are served from the same origin. Local licenses preserve their SIL notices and all installed runtime dependency notices. Reduced motion, focus handling and local form feedback support accessible use.
 
 ## Publication
 
@@ -32,10 +32,10 @@ Git history records actual milestones, beginning after finding only the matching
 
 ## Portable shared UI dependency
 
-`vendor/vesper-ui-2.0.0.tgz` is a byte-identical copy of the shared release (SHA-256 `09608c3a9a83ef41aef49059a83054688f3faa92e8f1a7d8592d2eb363594d6f`). npm records the local tarball and integrity; no sibling path or symlink is used. `src/env.d.ts` provides Vite asset types for the release's SVG import. The public favicon is copied unmodified from the release's `assets/brand/vesper-mark.svg`. Font notices retain the release's original OFL terms.
+`vendor/vesper-ui-3.0.0.tgz` is a byte-identical copy of the shared release (SHA-256 `2f3898d1d9214f9aeeb7cbe16ae7b285ab8e0b9e5c658849aadd5d51db4ecd38`). npm records the local tarball and integrity; no sibling path or symlink is used. `src/env.d.ts` provides Vite asset types for the release's SVG import. The public favicon is copied unmodified from the release's `assets/brand/vesper-mark.svg`. Font notices retain the release's original OFL terms.
 
 `Workspace.vue` owns all composition and state. The shared package supplies brand, native buttons, badges, fields, notices and empty-state presentation; eligibility remains in `src/domain`. The local presentation map uses the domain result for every current scope. One persistent status live region announces action results; corresponding visible notices have no duplicate announcement. Copy confirmation takes normal space below its button. Manual-copy and request editing disable sticky positioning to keep focused content clear.
 
 ## Vesper upgrade — 2026-09-30
 
-Verbatim now uses Vesper Media Group naming and the portable 2.0.0 release. The earlier Meridian integration established the same presentation boundary. Ionic core → shared fonts → shared styles → Ionic adapter → local composition remains the import order. No domain or persistence implementation changed; canonical data changes only the fictional parent name. The legacy storage key is intentional compatibility, not obsolete branding.
+Verbatim now uses Vesper Media Group naming and the portable 3.0.0 release. The earlier Meridian integration established the same presentation boundary. Ionic core → shared fonts → shared styles → Ionic adapter → local composition remains the import order. No domain or persistence implementation changed; canonical data changes only the fictional parent name. The legacy storage key is intentional compatibility, not obsolete branding.

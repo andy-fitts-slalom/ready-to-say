@@ -8,4 +8,4 @@ Share only parent branding and presentation through the vendored Vesper UI packa
 
 ## Current Vesper migration — 2026-09-30
 
-Use vendored `@vesper/ui` 2.0.0 for presentation. Work and commit on main only, preserve prior commits and unrelated untracked files, and push after tests, build, browser tests and formatting pass. Keep `ready-to-say-v1` readable. Keep the existing production domain `ready-to-say.vercel.app`; routing changes require explicit user approval. Previous branch-only restrictions are historical.
+Use vendored `@vesper/ui` 3.0.0 for presentation. Work and commit on main only, preserve prior commits and unrelated untracked files, and push after tests, build, browser tests and formatting pass. Keep `ready-to-say-v1` readable. Keep the existing production domain `ready-to-say.vercel.app`; routing changes require explicit user approval. Previous branch-only restrictions are historical.
