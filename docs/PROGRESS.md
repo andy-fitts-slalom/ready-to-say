@@ -12,6 +12,8 @@ Current instructions supersede the historical branch restrictions below. Work is
 
 - Final local checks: 18/18 unit tests, build, 60/60 browser tests (40.9s), formatting and whitespace checks passed. Clean archived migration commit `0eae6e6` installed offline and built independently.
 
+- Published `0eae6e6` and `e881f2f` on main. Automatic Vercel production deployment is Ready on the retained alias; live browser suite 60/60 passed (50.2s), GitHub CI run 36824870142 passed, and real clipboard readback matched all 210 canonical characters. See VERIFICATION.md for deployment IDs and live screenshot.
+
 ---
 
 # Main merge authorization — 2026-09-30

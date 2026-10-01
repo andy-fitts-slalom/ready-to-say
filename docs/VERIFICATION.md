@@ -16,6 +16,15 @@ Application commit: `0eae6e6`. This section supersedes the historical migration/
 
 Independent install: a clean `git archive` of `0eae6e6` in `/tmp/verbatim-portable-0eae6e6` passed `npm ci --offline` and production build without access to a sibling package path.
 
+## Production verification — 2026-09-30
+
+- Pushed migration `0eae6e6` and verification `e881f2f` to main without rewriting earlier commits. GitHub production deployment `6777732116` identifies full main SHA `e881f2f58217b099c09e5d7a494f8489c69e27c3`.
+- Vercel deployment `dpl_HUBrhHn4XN3SFE8yn4LESdUfqDs4`, https://verbatim-2wje4zy2g-andy-protogen.vercel.app, reached **Ready / Production** and retained https://ready-to-say.vercel.app as its alias. The project is `verbatim`; main deployment was triggered automatically by the push. No routing configuration was changed.
+- Full production-alias browser suite: **60/60 passed in 50.2s**, including direct-route refresh and the new persistence/reset cases.
+- [GitHub CI run 36824870142](https://github.com/andy-fitts-slalom/verbatim/actions/runs/36824870142) completed successfully.
+- Separate real Chrome clipboard readback matched the exact 210-character Vesper company-v2 canonical string. [Live phone copy confirmation](screenshots/vesper-2.0.0/live-phone-copy.png), 390×844, was captured and visually inspected on the public alias. This check used the real clipboard; regression denial/success cases use mocks.
+- Final publication-evidence commit changes docs/screenshots only; application code remains `0eae6e6`. Unrelated `.DS_Store` and `src/.DS_Store` remain untracked and untouched.
+
 ## Behavior and responsive evidence
 
 The original 32 browser cases remain unchanged. The previous 20 presentation regressions now target Vesper exports/classes/names. Eight new phone/desktop cases cover legacy stored requests and preferences without migration, exact retention across reload, cancellation and persisted reset, blocked storage writes retaining old durable data after a session reset, blocked reads/writes and reload recovery, a literal canonical copy expectation and the shipped safe-area CSS rule plus reachable copy action.
@@ -44,7 +53,7 @@ Learner requirements are mapped to concrete repository evidence in [LEARNER-AUDI
 
 Browser viewport emulation is not a physical iOS/Android keyboard, hardware safe-area or screen-reader audit. Safe-area verification inspects the actual shipped env() rule, computed padding and unobscured action; it does not simulate a hardware inset. Automated clipboard tests use mocks. No authentication, shared backend, native packaging, synchronization or real notifications are introduced.
 
-The Vercel project is `verbatim`; the existing production domain remains https://ready-to-say.vercel.app. A new production domain/routing change was rejected by automatic approval review in the parent task. No routing change is authorized or attempted here. Local success is not yet evidence of the post-push deployment; publication results will be appended after verification.
+The Vercel project is `verbatim`; the existing production domain remains https://ready-to-say.vercel.app. A new production domain/routing change was rejected by automatic approval review in the parent task. No routing change is authorized or attempted here. The post-push production results above verify the existing alias; the domain-change blocker remains.
 
 ---
 
