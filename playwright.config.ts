@@ -2,7 +2,7 @@ import { defineConfig } from '@playwright/test';
 const baseURL = process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:4287';
 export default defineConfig({
   testDir: './tests',
-  testMatch: 'browser.spec.ts',
+  testMatch: ['browser.spec.ts', 'meridian.spec.ts'],
   fullyParallel: true,
   workers: 2,
   reporter: 'list',

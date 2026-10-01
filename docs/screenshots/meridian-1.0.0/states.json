@@ -1,0 +1,157 @@
+{
+  "date": "2026-09-30",
+  "source": "Local production preview at http://127.0.0.1:4288; no deployment",
+  "browser": "Chrome via Playwright",
+  "records": [
+    {
+      "file": "phone-library.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "deviceScaleFactor": 1,
+      "route": "/",
+      "state": "Masthead, intended-use fields and search"
+    },
+    {
+      "file": "phone-results.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "deviceScaleFactor": 1,
+      "route": "/",
+      "state": "Ready and expired cards with permitted scope"
+    },
+    {
+      "file": "phone-eligible.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "deviceScaleFactor": 1,
+      "route": "/statements/company-v2",
+      "state": "Exact statement and eligible copy bar"
+    },
+    {
+      "file": "phone-copy-confirmation.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "deviceScaleFactor": 1,
+      "route": "/statements/company-v2",
+      "state": "Mocked successful clipboard feedback in normal layout below button"
+    },
+    {
+      "file": "phone-manual-copy.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "deviceScaleFactor": 1,
+      "route": "/statements/company-v2",
+      "state": "Clipboard denial; exact selectable readonly text and static bar"
+    },
+    {
+      "file": "phone-expired.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "deviceScaleFactor": 1,
+      "route": "/statements/streaming-v2",
+      "state": "Expired status, reason and request recovery with disabled copy"
+    },
+    {
+      "file": "phone-request-invalid.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "deviceScaleFactor": 1,
+      "route": "/requests",
+      "state": "Required reason validation linked to shared field"
+    },
+    {
+      "file": "phone-storage-failure.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "deviceScaleFactor": 1,
+      "route": "/requests",
+      "state": "Storage write blocked; persistent session-only notice"
+    },
+    {
+      "file": "phone-invalid-route.png",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "deviceScaleFactor": 1,
+      "route": "/statements/missing",
+      "state": "Unavailable route with library recovery at320px"
+    },
+    {
+      "file": "desktop-library.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "deviceScaleFactor": 1,
+      "route": "/",
+      "state": "Desktop parent identity, scope, search, count and two-column cards"
+    },
+    {
+      "file": "desktop-detail.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "deviceScaleFactor": 1,
+      "route": "/statements/company-v2",
+      "state": "Exact wording, approval metadata and version selector"
+    },
+    {
+      "file": "desktop-empty.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "deviceScaleFactor": 1,
+      "route": "/?q=no-matching-phrase-9823",
+      "state": "Empty search and recovery actions"
+    },
+    {
+      "file": "tablet-reset-confirmation.png",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "deviceScaleFactor": 1,
+      "route": "/demo",
+      "state": "Demo information and explicit local reset confirmation at768px"
+    },
+    {
+      "file": "zoom-200-reflow.png",
+      "viewport": {
+        "width": 720,
+        "height": 500
+      },
+      "deviceScaleFactor": 2,
+      "route": "/statements/company-v2",
+      "state": "1440x1000 at200% desktop reflow approximation:720x500 CSS pixels,2x raster; not native browser zoom"
+    },
+    {
+      "file": "desktop-text-200.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "route": "/statements/company-v2",
+      "rootFontSizePercent": 200,
+      "state": "200% root text resizing; independent of native browser zoom"
+    }
+  ]
+}

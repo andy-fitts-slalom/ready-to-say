@@ -229,7 +229,11 @@ function doReset() {
                 <option v-for="a in audiences" :key="a" :value="a">{{ a }}</option>
               </select>
             </MeridianField>
-            <MeridianField label="Region" v-slot="field">
+            <MeridianField
+              label="Region"
+              :hint="state.scope.region === 'global' ? 'Global covers all regions.' : undefined"
+              v-slot="field"
+            >
               <select
                 v-model="state.scope.region"
                 class="ms-input"
@@ -239,7 +243,7 @@ function doReset() {
                 :required="field.required"
               >
                 <option v-for="r in regions" :key="r" :value="r">
-                  {{ r === 'global' ? 'Global / all regions' : r.toUpperCase() }}
+                  {{ r === 'global' ? 'Global' : r.toUpperCase() }}
                 </option>
               </select>
             </MeridianField>

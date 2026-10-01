@@ -1,5 +1,7 @@
 # Ready to Say
 
+> **Current refactor branch:** Meridian UI 1.0.0 migration is reviewable on `refactor/meridian-ui-1.0.0`. It has not been deployed. The live URL below remains the original release. Refactor-branch deployments are disabled; do not merge/push main or publish without a separate request. See [current verification](docs/VERIFICATION.md).
+
 A mobile-first statement library for **Meridian Signal Group**, an entirely fictional organization. Find wording, verify approval and permitted use, then copy the exact eligible statement.
 
 - Live app: https://ready-to-say.vercel.app
@@ -8,6 +10,8 @@ A mobile-first statement library for **Meridian Signal Group**, an entirely fict
 - Handoff: [docs/PROGRESS.md](docs/PROGRESS.md)
 
 ## Run locally
+
+The shared UI release is checked into `vendor/meridian-ui-1.0.0.tgz` and installed from that file. A sibling folder or unpublished registry package is not needed.
 
 Use Node.js 22.12 or newer (Node 22 is used in CI and Vercel) and npm.
 
@@ -47,7 +51,7 @@ Clipboard success writes only the exact statement text. If permission or browser
 
 Ionic Vue provides the app shell and compatible router integration. Semantic forms have explicit labels, visible focus, generous targets, status announcements, reduced-motion support, and bottom safe-area padding. Recovery forms move focus into view. Status uses text and symbols as well as color. Narrow phones use a single-column library; desktop uses cards and a separate approval panel.
 
-Automated axe checks and keyboard/browser tests cover core pages. They do not replace assistive-technology or physical-device testing. Fonts are bundled locally, with notices in [public/licenses](public/licenses).
+Automated axe checks and keyboard/browser tests cover core pages. They do not replace assistive-technology or physical-device testing. Meridian UI supplies the parent M, locally hosted fonts, light/mobile semantic tokens, native Vue primitives and Ionic adapter. Domain rules and records remain application-owned. Fonts are bundled locally, with notices in [public/licenses](public/licenses).
 
 ## Deployment
 

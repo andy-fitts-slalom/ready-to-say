@@ -19,9 +19,30 @@
 - Replaced the legacy stylesheet rather than layering color overrides. Local CSS now owns composition using semantic tokens, readable labels, 48px controls and responsive layout.
 - Copy feedback flows inside the action bar, rather than obscuring it. The action bar becomes static while a request/manual-copy field is open or the viewport is short. One persistent live region announces action results.
 - Dataset, domain eligibility and storage implementation are unchanged. Presentation maps the full context-dependent eligibility result to shared status tones.
-- UI checkpoint: 18 unit tests, build, unchanged 32 browser tests (16.9s) passed. Phone and desktop rendered library inspected. Additional migration-specific regressions and visual evidence are in progress.
+- UI checkpoint: 18 unit tests, build, unchanged 32 browser tests (16.9s) passed. Phone and desktop rendered library inspected. Additional migration-specific regressions and final visual evidence are complete; see final results below.
 
-## Planned reviewable milestones
+## Final migration results and continuation
+
+- UI milestone `9d1192c` pushed to `refactor/meridian-ui-1.0.0`. Final verification milestone adds 20 regressions, final screenshots and the two visual-review fixes.
+- Required final checks passed: 18 unit tests; TypeScript/Vite build; **52/52 browser tests (25.2s)**; formatting. Original domain tests and 32 browser checks remain unchanged.
+- Clean archived UI checkout installed the tarball and built outside the shared sibling folder. No registry publication, symlink or parent-path dependency is required.
+- Full current evidence, limitations and 15 migrated-state screenshots with viewport/state metadata are in [VERIFICATION.md](VERIFICATION.md) and `docs/screenshots/meridian-1.0.0/` (plus two baseline captures).
+- Visual review fixed manual-copy field height and selected-scope readability at 200% text size. Domain logic, immutable text, fixed date, local storage key and original browser behavior are preserved.
+- No migration deployment. No push to main. Vercel branch auto-deployment disabled using [documented Git configuration](https://vercel.com/docs/project-configuration/git-configuration). GitHub deployment list for the refactor branch is empty; remote main still equals `21c16f76de221ba4a422981c89ed87a85f59eb81`.
+- Continue from the current refactor branch, read this section and current VERIFICATION.md first. Run `npm ci`, `npm test`, `npm run build`, `npm run test:e2e`, `npm run format:check`. Preview port 4287 is reserved by tests; manual review used 4288.
+- Keep `.DS_Store` files untouched and out of commits. Do not merge or deploy without a separate user request. The older main/deployment directions below are historical, superseded for this refactor.
+
+## File summary
+
+- `vendor/`, package manifest/lock: pinned portable Meridian UI 1.0.0 release; duplicate Fontsource dependencies removed.
+- `src/main.ts`, `index.html`, `src/env.d.ts`, `public/meridian-mark.svg`: stylesheet ordering, light/mobile/body foundation, shared mark/favicon and Vite asset typing.
+- `src/Workspace.vue`, `src/style.css`: shared brand/primitives, semantic state mapping, Ionicons, responsive token-based compositions, linked errors, focus-safe feedback/manual-copy presentation.
+- `public/licenses/`: regenerated third-party notices and retained font notices.
+- `tests/meridian.spec.ts`, `playwright.config.ts`: additional layout, scope, focus, fallback, text-resize and accessibility regressions; original tests retained.
+- `vercel.json`: deployment exclusion for this branch only.
+- `AGENTS.md`, `README.md`, `docs/`: migration constraints, integration notes, baseline/final evidence and continuation instructions.
+
+## Reviewable milestones
 
 1. Baseline, portable release and non-deploying branch setup.
 2. Parent identity, shared foundations, controls/statuses and all application states.
