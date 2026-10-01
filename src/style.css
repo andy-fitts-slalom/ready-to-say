@@ -36,6 +36,9 @@ select {
   max-width: 100%;
   text-transform: capitalize;
 }
+select.vs-input {
+  padding-right: calc(12px + var(--vs-space-4));
+}
 textarea.vs-input {
   resize: vertical;
   min-height: 10rem;
