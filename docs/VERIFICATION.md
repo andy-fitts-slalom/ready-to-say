@@ -1,5 +1,11 @@
 # Verbatim / Vesper UI 2.0.0 verification — 2026-09-30
 
+## Documentation sweep — 2026-09-30
+
+Refreshed README onboarding, workflows, setup, project structure and dated verification context. Corrected current branding guidance and explicitly marked superseded planning/migration records as historical. Vesper UI 2.0.0 remains the vendored dependency; runtime source and package manifests contain no Meridian references. Historical screenshots, branch deployment exclusions and compatibility storage keys are preserved.
+
+Validation: 18 unit tests, production build and 60 local browser tests passed; README local links resolve. Browser preview startup initially hit sandbox EPERM, then passed with approved local-server access. No application behavior or dataset changed. Existing production evidence remains dated; this documentation sweep does not claim a new live-site verification.
+
 Application commit: `0eae6e6`. This section supersedes the historical migration/deployment status below; earlier evidence remains intact.
 
 | Check                  | Actual result                                                                                                                                                                    |
@@ -57,7 +63,9 @@ The Vercel project is `verbatim`; the existing production domain remains https:/
 
 ---
 
-# Meridian UI 1.0.0 verification — 2026-09-30
+# Meridian UI 1.0.0 verification — 2026-09-30 (historical)
+
+This section records a superseded release. Package paths, test filenames, branch instructions and deployment status below apply to that revision only; current Vesper evidence appears above.
 
 This section applies to the **local refactor branch**, not the production site. The earlier production evidence is retained below as historical context.
 

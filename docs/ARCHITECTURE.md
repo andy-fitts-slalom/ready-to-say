@@ -2,7 +2,7 @@
 
 ## Boundaries
 
-This repository builds and deploys independently. The September 30 Meridian UI migration intentionally shares parent branding and presentation through a vendored versioned package; no application data or domain code is shared. All company context, people, statement wording and approval records were invented from BRIEF.md. No source vault, other case study, real client content or proprietary code was consulted.
+This repository builds and deploys independently. Vesper UI 2.0.0 shares parent branding and presentation through a vendored versioned package; no application data or domain code is shared. All company context, people, statement wording and approval records were invented from BRIEF.md. No source vault, other case study, real client content or proprietary code was consulted.
 
 ## Components and routing
 

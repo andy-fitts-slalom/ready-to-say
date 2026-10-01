@@ -1,6 +1,6 @@
 # Fictional data dictionary
 
-All 8 families, 24 versions, owners, approver records, and exact statements in `src/data/statements.json` were invented exclusively for Meridian Signal Group. There are no real contact details or external source materials.
+All 8 families, 24 versions, owners, approver records, and exact statements in `src/data/statements.json` were invented exclusively for Vesper Media Group. There are no real contact details or external source materials.
 
 ## Family fields
 

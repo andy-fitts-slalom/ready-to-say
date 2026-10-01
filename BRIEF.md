@@ -1,5 +1,8 @@
 # Ready to Say — Project Brief
 
+> Historical planning brief. The naming and design addendum at the end supersedes the original product, organization and delivery names. Start with [README.md](README.md) for the current application and setup.
+
+
 ## What is this?
 
 A mobile-first web experience for a press officer at Meridian Signal Group, a fictional company spanning digital publications, streaming entertainment, podcasts, and live events. Central communications maintains approved messages; regional teams need to find appropriate wording while supporting events or moving between meetings.
