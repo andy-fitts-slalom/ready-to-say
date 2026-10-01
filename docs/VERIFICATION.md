@@ -1,5 +1,11 @@
 # Verbatim / Vesper UI 2.0.0 verification — 2026-09-30
 
+## Wordmark cleanup — 2026-10-01
+
+The short petrol rule beneath the Verbatim wordmark was removed following visual feedback. The previous section documents the superseded treatment. Local production-preview screenshots at 320×640, 390×844 and 1440×1000 were visually inspected; the standalone wordmark, demo badge and navigation remain clear without horizontal overflow.
+
+Validation: 18/18 unit tests, production build, 60/60 browser tests, formatting and whitespace checks passed. Live-site verification is recorded after publication.
+
 ## Product-first identity — 2026-10-01
 
 Verbatim now leads the header as a display wordmark with a short petrol rule; the shared Vesper parent lockup is in the footer. This supersedes the header arrangement described in the earlier lockup-refinement section below. Local production-preview screenshots at 320×640, 390×844 and 1440×1000 were visually inspected, plus the 390px footer. The identity, badge and navigation fit without horizontal overflow.

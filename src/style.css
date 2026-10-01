@@ -78,13 +78,6 @@ ion-icon {
   letter-spacing: -0.045em;
   white-space: nowrap;
 }
-.product-name::after {
-  display: block;
-  width: var(--vs-space-8);
-  margin-top: var(--vs-space-1);
-  border-top: 2px solid var(--vs-action);
-  content: '';
-}
 .demo-tag {
   align-self: flex-start;
   margin-top: var(--vs-space-2);

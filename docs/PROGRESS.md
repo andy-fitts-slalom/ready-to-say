@@ -1,5 +1,10 @@
 # Verbatim / Vesper UI 2.0.0 — 2026-09-30
 
+## Wordmark cleanup — 2026-10-01
+
+- Removed the short rule under the Verbatim wordmark after visual feedback that it looked accidental. The product still leads the header, with the shared Vesper parent lockup in the footer.
+- No statement, eligibility, copy, storage, routing or deployment configuration changed. No new publication blocker.
+
 ## Product-first identity — 2026-10-01
 
 - Following visual feedback, the header now leads with a Verbatim display wordmark. The vendored Vesper mark and parent name appear in the footer attribution instead of competing in the header. The fictional-demo label remains visible.
