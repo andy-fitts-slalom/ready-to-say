@@ -1,52 +1,52 @@
-/* Ready to Say owns composition only. Theme, type, control and status foundations
-   come from the vendored Meridian UI release imported before this stylesheet. */
+/* Verbatim owns composition only. Theme, type, control and status foundations
+   come from the vendored Vesper UI release imported before this stylesheet. */
 body {
   margin: 0;
-  background: var(--ms-bg);
-  color: var(--ms-text);
-  font-family: var(--ms-font-ui);
+  background: var(--vs-bg);
+  color: var(--vs-text);
+  font-family: var(--vs-font-ui);
 }
 a {
-  color: var(--ms-action);
+  color: var(--vs-action);
 }
 p {
-  margin: 0 0 var(--ms-space-4);
+  margin: 0 0 var(--vs-space-4);
 }
 h1,
 h2 {
-  margin: 0 0 var(--ms-space-4);
+  margin: 0 0 var(--vs-space-4);
 }
 h2 {
-  font-size: var(--ms-text-xl);
-  line-height: var(--ms-leading-ui);
+  font-size: var(--vs-text-xl);
+  line-height: var(--vs-leading-ui);
 }
 button,
 a,
 input,
 select,
-textarea.ms-input {
+textarea.vs-input {
   -webkit-tap-highlight-color: transparent;
 }
 input,
 select,
-textarea.ms-input {
+textarea.vs-input {
   min-width: 0;
 }
 select {
   max-width: 100%;
   text-transform: capitalize;
 }
-textarea.ms-input {
+textarea.vs-input {
   resize: vertical;
   min-height: 10rem;
-  line-height: var(--ms-leading-body);
+  line-height: var(--vs-leading-body);
 }
 small {
-  font-size: var(--ms-text-xs);
+  font-size: var(--vs-text-xs);
 }
 ion-icon {
-  width: var(--ms-space-5);
-  height: var(--ms-space-5);
+  width: var(--vs-space-5);
+  height: var(--vs-space-5);
   flex-shrink: 0;
   vertical-align: middle;
 }
@@ -58,38 +58,38 @@ ion-icon {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--ms-space-4);
-  padding-block: var(--ms-space-6);
+  gap: var(--vs-space-4);
+  padding-block: var(--vs-space-6);
 }
 .brand-link {
   display: inline-flex;
-  color: var(--ms-text);
+  color: var(--vs-text);
   text-decoration: none;
-  border-radius: var(--ms-radius-sm);
+  border-radius: var(--vs-radius-sm);
 }
 .demo-tag {
   align-self: flex-start;
-  margin-top: var(--ms-space-2);
+  margin-top: var(--vs-space-2);
 }
 .nav {
-  gap: var(--ms-space-5);
-  font-size: var(--ms-text-sm);
+  gap: var(--vs-space-5);
+  font-size: var(--vs-text-sm);
 }
 .nav a {
-  gap: var(--ms-space-2);
-  padding-block: var(--ms-space-2);
+  gap: var(--vs-space-2);
+  padding-block: var(--vs-space-2);
 }
 main {
-  padding-top: var(--ms-space-6);
+  padding-top: var(--vs-space-6);
 }
 .scope {
   display: flex;
   flex-wrap: wrap;
   align-items: start;
-  gap: var(--ms-space-5);
-  background: var(--ms-surface-subtle);
+  gap: var(--vs-space-5);
+  background: var(--vs-surface-subtle);
 }
-.scope > .ms-field {
+.scope > .vs-field {
   flex: 1 1 11rem;
   min-width: min(100%, 11rem);
 }
@@ -99,27 +99,27 @@ main {
   display: flex;
   flex-direction: column;
   align-self: center;
-  gap: var(--ms-space-2);
-  font-size: var(--ms-text-sm);
+  gap: var(--vs-space-2);
+  font-size: var(--vs-text-sm);
 }
 .intro {
-  padding-block: var(--ms-section-gap);
+  padding-block: var(--vs-section-gap);
 }
-.intro .ms-eyebrow {
-  color: var(--ms-text-muted);
+.intro .vs-eyebrow {
+  color: var(--vs-text-muted);
 }
 .intro h1,
 .detail-heading h1 {
-  margin-top: var(--ms-space-4);
+  margin-top: var(--vs-space-4);
   font-size: clamp(2.75rem, 5vw, 4rem);
 }
 .intro h1 em {
   font-style: normal;
-  color: var(--ms-action);
+  color: var(--vs-action);
 }
 .intro p,
 .detail-heading p {
-  max-width: var(--ms-measure);
+  max-width: var(--vs-measure);
 }
 .intro p:last-child {
   margin-bottom: 0;
@@ -129,24 +129,24 @@ main {
 }
 .search-wrap ion-icon {
   position: absolute;
-  left: var(--ms-space-4);
+  left: var(--vs-space-4);
   top: 50%;
   transform: translateY(-50%);
-  color: var(--ms-text-muted);
+  color: var(--vs-text-muted);
   pointer-events: none;
 }
 .search-wrap input {
-  padding-left: var(--ms-space-12);
+  padding-left: var(--vs-space-12);
 }
 .filter-row {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ms-space-4);
+  gap: var(--vs-space-4);
   justify-content: space-between;
   align-items: end;
-  margin-block: var(--ms-space-5);
+  margin-block: var(--vs-space-5);
 }
-.filter-row .ms-field {
+.filter-row .vs-field {
   max-width: 100%;
   min-width: min(15rem, 100%);
 }
@@ -154,23 +154,23 @@ main {
   display: flex;
   flex-direction: column;
   text-align: right;
-  font-size: var(--ms-text-sm);
+  font-size: var(--vs-text-sm);
   margin-bottom: 0;
 }
 .result-count strong {
-  color: var(--ms-text);
-  font-weight: var(--ms-weight-semibold);
+  color: var(--vs-text);
+  font-weight: var(--vs-weight-semibold);
 }
 .cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--ms-space-4);
+  gap: var(--vs-space-4);
 }
 .card {
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  color: var(--ms-text);
+  color: var(--vs-text);
   min-width: 0;
 }
 .card-top {
@@ -178,65 +178,65 @@ main {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: var(--ms-space-3);
+  gap: var(--vs-space-3);
 }
 .card h2 {
-  margin-block: var(--ms-space-6) var(--ms-space-2);
+  margin-block: var(--vs-space-6) var(--vs-space-2);
 }
 .card p {
-  font-size: var(--ms-text-sm);
+  font-size: var(--vs-text-sm);
 }
 .card-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ms-space-3);
+  gap: var(--vs-space-3);
   margin-top: auto;
-  padding-top: var(--ms-space-4);
-  border-top: 1px solid var(--ms-border);
-  color: var(--ms-text-muted);
-  font-size: var(--ms-text-xs);
+  padding-top: var(--vs-space-4);
+  border-top: 1px solid var(--vs-border);
+  color: var(--vs-text-muted);
+  font-size: var(--vs-text-xs);
   text-transform: capitalize;
 }
-.ms-badge ion-icon {
-  width: var(--ms-space-4);
-  height: var(--ms-space-4);
+.vs-badge ion-icon {
+  width: var(--vs-space-4);
+  height: var(--vs-space-4);
 }
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
-    border-color: var(--ms-action);
-    background: var(--ms-surface-raised);
+    border-color: var(--vs-action);
+    background: var(--vs-surface-raised);
   }
 }
 .footnote {
   display: flex;
   align-items: flex-start;
-  gap: var(--ms-space-3);
-  padding-block: var(--ms-space-6);
-  font-size: var(--ms-text-sm);
+  gap: var(--vs-space-3);
+  padding-block: var(--vs-space-6);
+  font-size: var(--vs-text-sm);
 }
 footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: var(--ms-space-3);
-  border-top: 1px solid var(--ms-border);
-  margin-top: var(--ms-section-gap);
-  padding-block: var(--ms-space-6);
-  font-size: var(--ms-text-xs);
-  color: var(--ms-text-muted);
+  gap: var(--vs-space-3);
+  border-top: 1px solid var(--vs-border);
+  margin-top: var(--vs-section-gap);
+  padding-block: var(--vs-space-6);
+  font-size: var(--vs-text-xs);
+  color: var(--vs-text-muted);
 }
 .back {
-  margin-top: var(--ms-space-4);
+  margin-top: var(--vs-space-4);
   padding-inline: 0;
 }
 .detail-heading {
-  margin-block: var(--ms-space-6);
+  margin-block: var(--vs-space-6);
 }
 .detail-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.43fr);
-  gap: var(--ms-space-6);
+  gap: var(--vs-space-6);
   align-items: start;
 }
 .wording-panel,
@@ -244,28 +244,28 @@ footer {
   min-width: 0;
 }
 .conditions {
-  border-top: 1px solid var(--ms-border);
-  padding-top: var(--ms-space-5);
-  font-size: var(--ms-text-sm);
+  border-top: 1px solid var(--vs-border);
+  padding-top: var(--vs-space-5);
+  font-size: var(--vs-text-sm);
 }
 .conditions strong {
-  font-weight: var(--ms-weight-semibold);
+  font-weight: var(--vs-weight-semibold);
 }
 .conditions p {
-  margin-top: var(--ms-space-2);
+  margin-top: var(--vs-space-2);
 }
 .alert {
-  margin-block: var(--ms-space-5);
+  margin-block: var(--vs-space-5);
 }
 .alert ul {
-  padding-left: var(--ms-space-5);
-  margin-block: var(--ms-space-3);
+  padding-left: var(--vs-space-5);
+  margin-block: var(--vs-space-3);
 }
 .alert li + li {
-  margin-top: var(--ms-space-2);
+  margin-top: var(--vs-space-2);
 }
 .copy-bar {
-  margin-top: var(--ms-space-6);
+  margin-top: var(--vs-space-6);
 }
 .copy-bar > button {
   width: 100%;
@@ -274,7 +274,7 @@ footer {
 .copy-bar > small {
   display: block;
   text-align: center;
-  margin-top: var(--ms-space-2);
+  margin-top: var(--vs-space-2);
 }
 .copy-bar.is-static {
   position: static;
@@ -282,34 +282,34 @@ footer {
 /* Feedback is in normal flow inside the action bar, never layered over its button.
    When manual selection or a request form is open the bar stops sticking. */
 .notice {
-  margin-top: var(--ms-space-3);
+  margin-top: var(--vs-space-3);
 }
-.notice .ms-notice__title {
+.notice .vs-notice__title {
   margin: 0;
-  font-weight: var(--ms-weight-medium);
+  font-weight: var(--vs-weight-medium);
 }
 .result-notice {
-  max-width: var(--ms-measure);
+  max-width: var(--vs-measure);
 }
 .storage-notice {
-  margin-bottom: var(--ms-space-5);
+  margin-bottom: var(--vs-space-5);
 }
 .metadata {
-  background: var(--ms-surface-subtle);
+  background: var(--vs-surface-subtle);
 }
 .metadata h2 {
-  font-size: var(--ms-text-lg);
+  font-size: var(--vs-text-lg);
 }
 .metadata dl {
   display: grid;
-  gap: var(--ms-space-1);
-  font-size: var(--ms-text-sm);
-  margin-block: var(--ms-space-5);
+  gap: var(--vs-space-1);
+  font-size: var(--vs-text-sm);
+  margin-block: var(--vs-space-5);
 }
 .metadata dt {
-  color: var(--ms-text-muted);
-  font-size: var(--ms-text-xs);
-  margin-top: var(--ms-space-3);
+  color: var(--vs-text-muted);
+  font-size: var(--vs-text-xs);
+  margin-top: var(--vs-space-3);
 }
 .metadata dt:first-child {
   margin-top: 0;
@@ -320,60 +320,60 @@ footer {
   overflow-wrap: anywhere;
 }
 .version-help {
-  margin-block: var(--ms-space-3) 0;
-  font-size: var(--ms-text-sm);
+  margin-block: var(--vs-space-3) 0;
+  font-size: var(--vs-text-sm);
 }
 .info-panel,
 .request-form {
-  max-width: var(--ms-measure);
+  max-width: var(--vs-measure);
 }
 .info-panel h2 {
-  margin-top: var(--ms-space-8);
-  font-size: var(--ms-text-lg);
+  margin-top: var(--vs-space-8);
+  font-size: var(--vs-text-lg);
 }
 .info-panel h2:first-child {
   margin-top: 0;
 }
 .reset-confirmation {
-  margin-top: var(--ms-space-5);
+  margin-top: var(--vs-space-5);
 }
 .request-card {
-  margin-block: var(--ms-space-5);
+  margin-block: var(--vs-space-5);
 }
 .request-card h2 {
-  margin-top: var(--ms-space-4);
+  margin-top: var(--vs-space-4);
 }
 .request-card p {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
 .request-form {
-  margin-top: var(--ms-space-6);
-  scroll-margin-block: var(--ms-space-6);
+  margin-top: var(--vs-space-6);
+  scroll-margin-block: var(--vs-space-6);
 }
 .request-form form > p {
-  margin-top: var(--ms-space-4);
+  margin-top: var(--vs-space-4);
 }
 .form-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ms-space-2);
-  margin-top: var(--ms-space-4);
+  gap: var(--vs-space-2);
+  margin-top: var(--vs-space-4);
 }
 .manual {
-  margin-top: var(--ms-space-6);
+  margin-top: var(--vs-space-6);
 }
 .manual textarea,
-.request-form textarea.ms-input {
-  scroll-margin-block: var(--ms-space-8);
+.request-form textarea.vs-input {
+  scroll-margin-block: var(--vs-space-8);
 }
 .invalid-route {
-  padding-top: var(--ms-space-6);
+  padding-top: var(--vs-space-6);
 }
 @media (max-width: 700px) {
   .scope {
-    gap: var(--ms-space-3);
-    padding: var(--ms-space-4);
+    gap: var(--vs-space-3);
+    padding: var(--vs-space-4);
   }
   .scope-intro {
     flex-basis: 100%;
@@ -386,25 +386,25 @@ footer {
     grid-template-columns: minmax(0, 1fr);
   }
   .wording-panel {
-    padding: var(--ms-space-5);
+    padding: var(--vs-space-5);
   }
   .result-count {
     text-align: left;
   }
   .metadata dl {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--ms-space-3);
+    gap: var(--vs-space-3);
   }
   .metadata dt {
     margin: 0;
   }
 }
 @media (max-width: 480px) {
-  .scope > .ms-field {
+  .scope > .vs-field {
     flex-basis: 100%;
   }
   .nav {
-    column-gap: var(--ms-space-4);
+    column-gap: var(--vs-space-4);
     row-gap: 0;
   }
   .demo-tag {
@@ -413,10 +413,10 @@ footer {
   .header {
     align-items: flex-start;
   }
-  .filter-row .ms-field {
+  .filter-row .vs-field {
     width: 100%;
   }
-  .ms-notice__actions > *,
+  .vs-notice__actions > *,
   .form-actions > * {
     max-width: 100%;
   }
@@ -429,6 +429,6 @@ footer {
   }
 }
 
-.manual textarea.ms-input {
+.manual textarea.vs-input {
   min-height: 14rem;
 }

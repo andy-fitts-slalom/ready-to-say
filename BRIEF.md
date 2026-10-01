@@ -68,3 +68,15 @@ Use a dedicated private GitHub repository named `ready-to-say` under `andy-fitts
 Keep `BRIEF.md`, `README.md`, and `LICENSE` in the root. Use an MIT license for original prototype code and preserve dependency notices. The README explains setup, commands, the fictional organization, eligibility rules, local persistence/reset, accessibility considerations, limitations, and live URL. Keep agent instructions and dated decisions/progress in an organized `docs/` structure and an appropriate root `AGENTS.md`.
 
 Make and push descriptive commits as planning, data, navigation, core flows, and verification are completed. Do not fabricate development history. Verify the deployed mobile experience and report any remaining limitations honestly.
+
+## Naming and design addendum — 2026-09-30
+
+This addendum supersedes the original naming and publication plan above while retaining that planning history. The product is **Verbatim**, a mobile-first approved-wording library for the invented **Vesper Media Group**. Its industry fit remains press and regional communications across publishing, streaming, podcasts and live events. The core job remains find → verify scope and approval → copy exact wording, with honest local recovery requests.
+
+Upgrade the existing shared Meridian integration to vendored `@vesper/ui` 2.0.0. Use light/mobile semantic tokens, the supplied V-and-star brand, warm cream reading surfaces, petrol actions, DM Sans UI, Caslon display headings and Georgia canonical statements. Preserve Ionic routing, page caching, view-entry focus, one scroll container, 48px controls and safe-area clearance.
+
+Only the old fictional parent name is deliberately replaced in seeded canonical strings; punctuation, whitespace and every other word are preserved. Eligibility remains fixed at 2025-10-21 with inclusive boundaries and a copy-action recheck. Keep the existing `ready-to-say-v1` key so preferences and requests remain readable without migration.
+
+The public repository is https://github.com/andy-fitts-slalom/verbatim and the Vercel project is Verbatim (`verbatim`). Main deploys automatically; preserve descriptive multi-commit history on main. The accessible production site remains https://ready-to-say.vercel.app. New production domain/routing changes were blocked by automatic approval review in the parent task and require explicit user approval. Password protection is optional and is not enabled. No client-specific source material or real notification workflow belongs in the product.
+
+Acceptance retains every original flow and edge case above. Evidence belongs in docs/VERIFICATION.md, including responsive/browser checks and candid physical-device limits. Root README, MIT LICENSE, architecture, data dictionary, agent guidance and dated progress provide the learner planning and AI context trail.

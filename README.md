@@ -1,17 +1,17 @@
-# Ready to Say
+# Verbatim
 
-> **Meridian UI 1.0.0:** The three refactor commits were merged into `main` without squashing on September 30, 2026, at the user's request. Main retains its connected automatic production deployment. See [verification evidence](docs/VERIFICATION.md) and [progress](docs/PROGRESS.md).
+> **Vesper UI 2.0.0:** Verbatim is the mobile approved-wording library for Vesper Media Group. See [current verification](docs/VERIFICATION.md) and [progress](docs/PROGRESS.md).
 
-A mobile-first statement library for **Meridian Signal Group**, an entirely fictional organization. Find wording, verify approval and permitted use, then copy the exact eligible statement.
+A mobile-first statement library for **Vesper Media Group**, an entirely fictional organization. Find wording, verify approval and permitted use, then copy the exact eligible statement.
 
 - Live app: https://ready-to-say.vercel.app
-- Public repository: https://github.com/andy-fitts-slalom/ready-to-say
+- Public repository: https://github.com/andy-fitts-slalom/verbatim
 - Specification: [BRIEF.md](BRIEF.md)
 - Handoff: [docs/PROGRESS.md](docs/PROGRESS.md)
 
 ## Run locally
 
-The shared UI release is checked into `vendor/meridian-ui-1.0.0.tgz` and installed from that file. A sibling folder or unpublished registry package is not needed.
+The shared UI release is checked into `vendor/vesper-ui-2.0.0.tgz` and installed from that file. A sibling folder or unpublished registry package is not needed.
 
 Use Node.js 22.12 or newer (Node 22 is used in CI and Vercel) and npm.
 
@@ -51,13 +51,13 @@ Clipboard success writes only the exact statement text. If permission or browser
 
 Ionic Vue provides the app shell and compatible router integration. Semantic forms have explicit labels, visible focus, generous targets, status announcements, reduced-motion support, and bottom safe-area padding. Recovery forms move focus into view. Status uses text and symbols as well as color. Narrow phones use a single-column library; desktop uses cards and a separate approval panel.
 
-Automated axe checks and keyboard/browser tests cover core pages. They do not replace assistive-technology or physical-device testing. Meridian UI supplies the parent M, locally hosted fonts, light/mobile semantic tokens, native Vue primitives and Ionic adapter. Domain rules and records remain application-owned. Fonts are bundled locally, with notices in [public/licenses](public/licenses).
+Automated axe checks and keyboard/browser tests cover core pages. They do not replace assistive-technology or physical-device testing. Vesper UI supplies the parent V-and-star mark, locally hosted fonts, light/mobile semantic tokens, native Vue primitives and Ionic adapter. Domain rules and records remain application-owned. Fonts are bundled locally, with notices in [public/licenses](public/licenses).
 
 ## Deployment
 
-Vercel project **ready-to-say**, team **Andy-Protogen** (`andy-protogen`), uses Vite, `npm ci`, `npm run build`, output `dist`, and Node 22. GitHub is connected and pushes to the production branch `main` deploy automatically. `vercel.json` supplies history-route fallbacks for direct statement URLs and refreshes. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for the passing local, CI and deployed-browser checks.
+Vercel project **Verbatim** (`verbatim`), team **Andy-Protogen** (`andy-protogen`), uses Vite, `npm ci`, `npm run build`, output `dist`, and Node 22. GitHub is connected and pushes to the production branch `main` deploy automatically. `vercel.json` supplies history-route fallbacks for direct statement URLs and refreshes. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for the passing local, CI and deployed-browser checks.
 
-No runtime secrets or environment variables are required. `.env*`, `.vercel/`, dependencies, and browser artifacts are ignored. The GitHub workflow builds and verifies pushes and pull requests. Manual publication, when needed: `npx vercel deploy --prod --scope andy-protogen` after linking the intended project.
+No runtime secrets or environment variables are required. `.env*`, `.vercel/`, dependencies, and browser artifacts are ignored. The GitHub workflow builds and verifies pushes and pull requests. The production domain remains `ready-to-say.vercel.app`. A new domain/routing change was blocked by automatic approval review in the parent task; do not change it without explicit user approval.
 
 ## Project structure
 

@@ -12,13 +12,13 @@ import {
   selectVersion,
 } from './domain/eligibility';
 import {
-  MeridianBrand,
-  MeridianButton,
-  MeridianBadge,
-  MeridianNotice,
-  MeridianField,
-  MeridianEmpty,
-} from '@meridian/ui/vue';
+  VesperBrand,
+  VesperButton,
+  VesperBadge,
+  VesperNotice,
+  VesperField,
+  VesperEmpty,
+} from '@vesper/ui/vue';
 import {
   checkmarkCircleOutline,
   alertCircleOutline,
@@ -36,7 +36,7 @@ const router = useRouter();
 const pageId = useId();
 const mainContent = ref<HTMLElement>();
 onIonViewDidEnter(() => {
-  document.title = `${family.value?.title || (route.path === '/requests' ? 'Local requests' : route.path === '/demo' ? 'Demo info' : 'Statement library')} · Ready to Say`;
+  document.title = `${family.value?.title || (route.path === '/requests' ? 'Local requests' : route.path === '/demo' ? 'Demo info' : 'Statement library')} · Verbatim`;
   mainContent.value?.focus({ preventScroll: true });
 });
 const search = computed({
@@ -178,49 +178,47 @@ function doReset() {
 <template>
   <IonPage>
     <IonContent role="presentation">
-      <div class="shell ms-shell">
-        <a :href="`#main-${pageId}`" class="skip ms-skip">Skip to content</a>
+      <div class="shell vs-shell">
+        <a :href="`#main-${pageId}`" class="skip vs-skip">Skip to content</a>
         <header class="header">
-          <RouterLink to="/" class="brand-link"
-            ><MeridianBrand product="Ready to Say"
-          /></RouterLink>
-          <MeridianBadge tone="neutral" class="demo-tag">Fictional demo</MeridianBadge>
+          <RouterLink to="/" class="brand-link"><VesperBrand product="Verbatim" /></RouterLink>
+          <VesperBadge tone="neutral" class="demo-tag">Fictional demo</VesperBadge>
         </header>
-        <nav class="nav ms-tabs" aria-label="Main">
+        <nav class="nav vs-tabs" aria-label="Main">
           <RouterLink to="/" :aria-current="route.path === '/' ? 'page' : undefined"
             >Statement library</RouterLink
           >
           <RouterLink to="/requests" :aria-current="route.path === '/requests' ? 'page' : undefined"
             >Local requests
-            <MeridianBadge v-if="state.requests.length">{{
+            <VesperBadge v-if="state.requests.length">{{
               state.requests.length
-            }}</MeridianBadge></RouterLink
+            }}</VesperBadge></RouterLink
           >
           <RouterLink to="/demo" :aria-current="route.path === '/demo' ? 'page' : undefined"
             >Demo info</RouterLink
           >
         </nav>
         <main :id="`main-${pageId}`" ref="mainContent" tabindex="-1">
-          <MeridianNotice
+          <VesperNotice
             v-if="state.storageError"
             title="Local storage"
             tone="warning"
             announcement="assertive"
             class="storage-notice"
-            >{{ state.storageError }}</MeridianNotice
+            >{{ state.storageError }}</VesperNotice
           >
           <section
             v-if="route.path === '/' || detail || route.path === '/requests'"
-            class="scope ms-surface"
+            class="scope vs-surface"
             aria-label="Intended use"
           >
             <div class="scope-intro">
-              <span class="ms-eyebrow">Your intended use</span><span>Check wording for</span>
+              <span class="vs-eyebrow">Your intended use</span><span>Check wording for</span>
             </div>
-            <MeridianField label="Audience" v-slot="field">
+            <VesperField label="Audience" v-slot="field">
               <select
                 v-model="state.scope.audience"
-                class="ms-input"
+                class="vs-input"
                 :id="field.id"
                 :aria-describedby="field.describedby"
                 :aria-invalid="field.invalid"
@@ -228,15 +226,15 @@ function doReset() {
               >
                 <option v-for="a in audiences" :key="a" :value="a">{{ a }}</option>
               </select>
-            </MeridianField>
-            <MeridianField
+            </VesperField>
+            <VesperField
               label="Region"
               :hint="state.scope.region === 'global' ? 'Global covers all regions.' : undefined"
               v-slot="field"
             >
               <select
                 v-model="state.scope.region"
-                class="ms-input"
+                class="vs-input"
                 :id="field.id"
                 :aria-describedby="field.describedby"
                 :aria-invalid="field.invalid"
@@ -246,22 +244,22 @@ function doReset() {
                   {{ r === 'global' ? 'Global' : r.toUpperCase() }}
                 </option>
               </select>
-            </MeridianField>
+            </VesperField>
           </section>
           <template v-if="route.path === '/'">
             <section class="intro">
-              <span class="ms-eyebrow">The statement library</span>
-              <h1 class="ms-display">The right words.<br /><em>Ready when you are.</em></h1>
-              <p class="ms-muted">
+              <span class="vs-eyebrow">The statement library</span>
+              <h1 class="vs-display">The right words.<br /><em>Ready when you are.</em></h1>
+              <p class="vs-muted">
                 Find a statement. Check its permitted use.<br />Copy with confidence.
               </p>
             </section>
-            <MeridianField label="Search statements" :id="`search-${pageId}`" v-slot="field">
+            <VesperField label="Search statements" :id="`search-${pageId}`" v-slot="field">
               <div class="search-wrap">
                 <IonIcon :icon="searchOutline" aria-hidden="true" /><input
                   v-model="search"
                   type="search"
-                  class="ms-input"
+                  class="vs-input"
                   :id="field.id"
                   :aria-describedby="field.describedby"
                   :aria-invalid="field.invalid"
@@ -269,12 +267,12 @@ function doReset() {
                   placeholder="Search a topic, title or phrase…"
                 />
               </div>
-            </MeridianField>
+            </VesperField>
             <div class="filter-row">
-              <MeridianField label="Topic" v-slot="field"
+              <VesperField label="Topic" v-slot="field"
                 ><select
                   v-model="topic"
-                  class="ms-input"
+                  class="vs-input"
                   :id="field.id"
                   :aria-describedby="field.describedby"
                   :aria-invalid="field.invalid"
@@ -282,9 +280,9 @@ function doReset() {
                 >
                   <option value="">All topics</option>
                   <option v-for="f in families" :key="f.id" :value="f.topic">{{ f.topic }}</option>
-                </select></MeridianField
+                </select></VesperField
               >
-              <p class="result-count ms-muted">
+              <p class="result-count vs-muted">
                 <strong>{{ readyCount }} ready for your use</strong
                 ><span
                   >{{ results.length }} statements · {{ state.scope.audience }} ·
@@ -292,33 +290,33 @@ function doReset() {
                 >
               </p>
             </div>
-            <MeridianEmpty
+            <VesperEmpty
               v-if="!results.length"
               title="No matching statements"
               description="Try a broader phrase or clear your search and topic filter."
-              ><MeridianButton variant="secondary" @click="router.replace('/')"
-                >Clear filters</MeridianButton
-              ><MeridianButton variant="quiet" @click="openRequest"
-                >Request wording</MeridianButton
-              ></MeridianEmpty
+              ><VesperButton variant="secondary" @click="router.replace('/')"
+                >Clear filters</VesperButton
+              ><VesperButton variant="quiet" @click="openRequest"
+                >Request wording</VesperButton
+              ></VesperEmpty
             >
             <div class="cards">
               <RouterLink
                 v-for="item in results"
                 :key="item.family.id"
                 :to="link(item.version!.id)"
-                class="card ms-surface"
+                class="card vs-surface"
               >
                 <div class="card-top">
-                  <span class="ms-eyebrow">{{ item.family.topic }}</span
-                  ><MeridianBadge :tone="presentation(item.version!).tone"
+                  <span class="vs-eyebrow">{{ item.family.topic }}</span
+                  ><VesperBadge :tone="presentation(item.version!).tone"
                     ><IonIcon :icon="presentation(item.version!).icon" aria-hidden="true" />{{
                       presentation(item.version!).label
-                    }}</MeridianBadge
+                    }}</VesperBadge
                   >
                 </div>
                 <h2>{{ item.family.title }}</h2>
-                <p class="ms-muted">{{ item.family.description }}</p>
+                <p class="vs-muted">{{ item.family.description }}</p>
                 <div class="card-bottom">
                   <span
                     >Version {{ item.version!.version }} · {{ item.version!.regions.join(', ') }} ·
@@ -327,33 +325,33 @@ function doReset() {
                 </div>
               </RouterLink>
             </div>
-            <aside class="footnote ms-muted">
+            <aside class="footnote vs-muted">
               <IonIcon :icon="shieldCheckmarkOutline" aria-hidden="true" />Approval is specific to
               your audience and region. Always check the details before sharing.
             </aside>
           </template>
           <template v-else-if="detail && current && family">
             <RouterLink
-              class="back ms-button ms-button--quiet"
+              class="back vs-button vs-button--quiet"
               :to="{ path: '/', query: route.query }"
               ><IonIcon :icon="arrowBackOutline" aria-hidden="true" />Back to library</RouterLink
             >
             <div class="detail-heading">
-              <span class="ms-eyebrow">{{ family.topic }}</span>
-              <h1 class="ms-display">{{ family.title }}</h1>
-              <p class="ms-muted">{{ family.description }}</p>
+              <span class="vs-eyebrow">{{ family.topic }}</span>
+              <h1 class="vs-display">{{ family.title }}</h1>
+              <p class="vs-muted">{{ family.description }}</p>
             </div>
             <div class="detail-grid">
-              <section class="wording-panel ms-surface" aria-label="Statement wording">
+              <section class="wording-panel vs-surface" aria-label="Statement wording">
                 <div class="card-top">
-                  <span class="ms-eyebrow">Exact statement · V{{ current.version }}</span
-                  ><MeridianBadge :tone="presentation(current).tone"
+                  <span class="vs-eyebrow">Exact statement · V{{ current.version }}</span
+                  ><VesperBadge :tone="presentation(current).tone"
                     ><IonIcon :icon="presentation(current).icon" aria-hidden="true" />{{
                       presentation(current).label
-                    }}</MeridianBadge
+                    }}</VesperBadge
                   >
                 </div>
-                <blockquote class="ms-quote">{{ current.text }}</blockquote>
+                <blockquote class="vs-quote">{{ current.text }}</blockquote>
                 <div class="conditions">
                   <strong>Permitted use</strong>
                   <p>
@@ -364,7 +362,7 @@ function doReset() {
                     Global wording can be used in each listed audience across all regions.
                   </p>
                 </div>
-                <MeridianNotice
+                <VesperNotice
                   v-if="!verdict?.eligible"
                   title="Copy unavailable"
                   :tone="presentation(current).tone"
@@ -376,7 +374,7 @@ function doReset() {
                   <template #actions>
                     <RouterLink
                       v-if="verdict?.replacement"
-                      class="ms-button ms-button--secondary"
+                      class="vs-button vs-button--secondary"
                       :to="link(verdict.replacement.id)"
                       >Open approved replacement<IonIcon
                         :icon="arrowForwardOutline"
@@ -384,18 +382,18 @@ function doReset() {
                     /></RouterLink>
                     <RouterLink
                       v-else-if="alternative"
-                      class="ms-button ms-button--secondary"
+                      class="vs-button vs-button--secondary"
                       :to="link(alternative.id)"
                       >Open current approved wording<IonIcon
                         :icon="arrowForwardOutline"
                         aria-hidden="true"
                     /></RouterLink>
-                    <MeridianButton variant="quiet" @click="openRequest"
-                      >Request updated wording</MeridianButton
+                    <VesperButton variant="quiet" @click="openRequest"
+                      >Request updated wording</VesperButton
                     >
                   </template>
-                </MeridianNotice>
-                <MeridianField
+                </VesperNotice>
+                <VesperField
                   v-if="manual && verdict?.eligible"
                   label="Select and copy exact wording"
                   :id="`manual-${pageId}`"
@@ -407,21 +405,21 @@ function doReset() {
                     ref="manualText"
                     readonly
                     :value="current.text"
-                    class="ms-input"
+                    class="vs-input"
                     :id="field.id"
                     :aria-describedby="field.describedby"
                     :aria-invalid="field.invalid"
                     :required="field.required"
                     @focus="($event.target as HTMLTextAreaElement).select()"
                   />
-                </MeridianField>
-                <div class="copy-bar ms-action-bar" :class="{ 'is-static': manual || form }">
-                  <MeridianButton :disabled="!verdict?.eligible" @click="copy"
+                </VesperField>
+                <div class="copy-bar vs-action-bar" :class="{ 'is-static': manual || form }">
+                  <VesperButton :disabled="!verdict?.eligible" @click="copy"
                     >{{ verdict?.eligible ? 'Copy exact wording' : 'Copy unavailable'
                     }}<IonIcon :icon="copyOutline" aria-hidden="true"
-                  /></MeridianButton>
-                  <small class="ms-muted">Approval checked against the fixed demo date.</small>
-                  <MeridianNotice
+                  /></VesperButton>
+                  <small class="vs-muted">Approval checked against the fixed demo date.</small>
+                  <VesperNotice
                     v-if="notice && feedbackKind === 'copy'"
                     :title="notice"
                     tone="info"
@@ -430,7 +428,7 @@ function doReset() {
                   />
                 </div>
               </section>
-              <aside class="metadata ms-surface">
+              <aside class="metadata vs-surface">
                 <h2>Approval record</h2>
                 <dl>
                   <dt>Status</dt>
@@ -446,10 +444,10 @@ function doReset() {
                   <dt>Valid through</dt>
                   <dd>{{ current.expiresAt }}</dd>
                 </dl>
-                <MeridianField label="View version" v-slot="field"
+                <VesperField label="View version" v-slot="field"
                   ><select
                     :value="current.id"
-                    class="ms-input"
+                    class="vs-input"
                     :id="field.id"
                     :aria-describedby="field.describedby"
                     :aria-invalid="field.invalid"
@@ -459,9 +457,9 @@ function doReset() {
                     <option v-for="v in siblings" :key="v.id" :value="v.id">
                       Version {{ v.version }} · {{ presentation(v).label }}
                     </option>
-                  </select></MeridianField
+                  </select></VesperField
                 >
-                <p class="version-help ms-muted">
+                <p class="version-help vs-muted">
                   A draft does not replace usable approved wording.
                 </p>
               </aside>
@@ -469,23 +467,23 @@ function doReset() {
           </template>
           <template v-else-if="route.path === '/requests'">
             <section class="intro">
-              <span class="ms-eyebrow">Browser-local demonstration</span>
-              <h1 class="ms-display">Your requests</h1>
-              <p class="ms-muted">
+              <span class="vs-eyebrow">Browser-local demonstration</span>
+              <h1 class="vs-display">Your requests</h1>
+              <p class="vs-muted">
                 Saved here, on this device. No messages are sent and no one is notified.
               </p>
-              <MeridianButton @click="openRequest">Request wording</MeridianButton>
+              <VesperButton @click="openRequest">Request wording</VesperButton>
             </section>
-            <MeridianEmpty
+            <VesperEmpty
               v-if="!state.requests.length"
               title="No local requests yet"
               description="When approved wording is unavailable, save a request to keep track of what you need."
             />
-            <article v-for="r in state.requests" :key="r.id" class="request-card ms-surface">
-              <MeridianBadge tone="info">Saved locally · demo</MeridianBadge>
+            <article v-for="r in state.requests" :key="r.id" class="request-card vs-surface">
+              <VesperBadge tone="info">Saved locally · demo</VesperBadge>
               <h2>{{ r.topic }}</h2>
               <p>{{ r.reason }}</p>
-              <small class="ms-muted"
+              <small class="vs-muted"
                 >{{ r.scope.audience }} · {{ r.scope.region }} ·
                 {{ new Date(r.createdAt).toLocaleDateString() }}</small
               >
@@ -493,11 +491,11 @@ function doReset() {
           </template>
           <template v-else-if="route.path === '/demo'">
             <section class="intro">
-              <span class="ms-eyebrow">A fictional working prototype</span>
-              <h1 class="ms-display">About this demo</h1>
-              <p class="ms-muted">Clear wording. Deliberate boundaries.</p>
+              <span class="vs-eyebrow">A fictional working prototype</span>
+              <h1 class="vs-display">About this demo</h1>
+              <p class="vs-muted">Clear wording. Deliberate boundaries.</p>
             </section>
-            <section class="info-panel ms-surface">
+            <section class="info-panel vs-surface">
               <h2>Fixed demonstration date</h2>
               <p>
                 <strong>{{ DEMO_DATE }}</strong> · Validity is evaluated on this date, including the
@@ -505,8 +503,8 @@ function doReset() {
               </p>
               <h2>Entirely fictional</h2>
               <p>
-                Meridian Signal Group, its people, statements and approval records are invented.
-                These rules demonstrate a workflow; they are not authentication or access control.
+                Vesper Media Group, its people, statements and approval records are invented. These
+                rules demonstrate a workflow; they are not authentication or access control.
               </p>
               <h2>Only in this browser</h2>
               <p>
@@ -519,37 +517,37 @@ function doReset() {
                 Reset removes this demo’s local requests and restores Press / Global. The statement
                 library always uses the original seed data.
               </p>
-              <MeridianButton variant="secondary" @click="confirmingReset = true"
-                >Reset demo</MeridianButton
+              <VesperButton variant="secondary" @click="confirmingReset = true"
+                >Reset demo</VesperButton
               >
-              <MeridianNotice
+              <VesperNotice
                 v-if="confirmingReset"
                 title="Reset local demo data?"
                 tone="warning"
                 class="reset-confirmation"
                 ><p>Remove all local demo requests and restore preferences?</p>
                 <template #actions
-                  ><MeridianButton variant="danger" @click="doReset">Yes, reset demo</MeridianButton
-                  ><MeridianButton variant="quiet" @click="confirmingReset = false"
-                    >Cancel</MeridianButton
+                  ><VesperButton variant="danger" @click="doReset">Yes, reset demo</VesperButton
+                  ><VesperButton variant="quiet" @click="confirmingReset = false"
+                    >Cancel</VesperButton
                   ></template
-                ></MeridianNotice
+                ></VesperNotice
               >
             </section>
           </template>
           <section v-else class="invalid-route">
-            <h1 class="ms-title">Statement unavailable</h1>
-            <MeridianEmpty
+            <h1 class="vs-title">Statement unavailable</h1>
+            <VesperEmpty
               title="This link has no matching statement"
               description="This link does not match a statement in the demo library."
-              ><RouterLink class="ms-button ms-button--primary" to="/"
+              ><RouterLink class="vs-button vs-button--primary" to="/"
                 >Return to library</RouterLink
-              ></MeridianEmpty
+              ></VesperEmpty
             >
           </section>
           <section
             v-if="form"
-            class="request-form ms-surface"
+            class="request-form vs-surface"
             :aria-labelledby="`request-heading-${pageId}`"
           >
             <h2 :id="`request-heading-${pageId}`" ref="requestHeading" tabindex="-1">
@@ -557,23 +555,23 @@ function doReset() {
             </h2>
             <p>Local demo only. No one will be notified.</p>
             <form @submit.prevent="saveRequest" novalidate>
-              <MeridianField label="Topic" v-slot="field"
+              <VesperField label="Topic" v-slot="field"
                 ><select
                   v-model="requestTopic"
-                  class="ms-input"
+                  class="vs-input"
                   :id="field.id"
                   :aria-describedby="field.describedby"
                   :aria-invalid="field.invalid"
                   :required="field.required"
                 >
                   <option v-for="f in families" :key="f.id">{{ f.topic }}</option>
-                </select></MeridianField
+                </select></VesperField
               >
               <p>
                 Requested use:
                 <strong>{{ state.scope.audience }} · {{ state.scope.region }}</strong>
               </p>
-              <MeridianField
+              <VesperField
                 label="Reason"
                 :id="`reason-${pageId}`"
                 :error="error"
@@ -584,22 +582,22 @@ function doReset() {
                 <textarea
                   v-model="reason"
                   maxlength="1000"
-                  class="ms-input"
+                  class="vs-input"
                   :id="field.id"
                   :aria-describedby="field.describedby"
                   :aria-invalid="field.invalid"
                   :required="field.required"
                   placeholder="What wording do you need, and why?"
                 />
-              </MeridianField>
+              </VesperField>
               <div class="form-actions">
-                <MeridianButton type="submit">Save local request</MeridianButton
-                ><MeridianButton variant="quiet" @click="form = false">Cancel</MeridianButton>
+                <VesperButton type="submit">Save local request</VesperButton
+                ><VesperButton variant="quiet" @click="form = false">Cancel</VesperButton>
               </div>
             </form>
           </section>
-          <div role="status" aria-live="polite" class="ms-sr-only">{{ notice }}</div>
-          <MeridianNotice
+          <div role="status" aria-live="polite" class="vs-sr-only">{{ notice }}</div>
+          <VesperNotice
             v-if="notice && feedbackKind !== 'copy'"
             :title="notice"
             tone="info"
@@ -608,7 +606,7 @@ function doReset() {
           />
         </main>
         <footer>
-          <span>Meridian Signal Group</span><span>Fictional content. Real clarity.</span>
+          <span>Vesper Media Group</span><span>Fictional content. Real clarity.</span>
         </footer>
       </div>
     </IonContent>

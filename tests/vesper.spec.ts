@@ -45,7 +45,7 @@ async function contentFits(page: Page) {
 }
 async function labelsFit(page: Page) {
   const clipped = await visible(page)
-    .locator('.ms-field label, .ms-button, .ms-brand__product, .nav a')
+    .locator('.vs-field label, .vs-button, .vs-brand__product, .nav a')
     .evaluateAll((elements) =>
       elements.flatMap((element) => {
         const box = element.getBoundingClientRect();
@@ -71,17 +71,17 @@ async function axe(page: Page) {
   ).toEqual([]);
 }
 
-test('Meridian light mobile foundation and shared parent brand load', async ({ page }) => {
+test('Vesper light mobile foundation and shared parent brand load', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('html')).toHaveAttribute('data-ms-theme', 'light');
-  await expect(page.locator('html')).toHaveAttribute('data-ms-mode', 'mobile');
-  await expect(page.locator('body')).toHaveClass(/ms-root/);
-  await expect(visible(page).locator('.ms-brand__name')).toHaveText('MERIDIAN');
-  await expect(visible(page).locator('.ms-brand__descriptor')).toHaveText('SIGNAL GROUP');
-  await expect(visible(page).locator('.ms-brand__product')).toHaveText('Ready to Say');
+  await expect(page.locator('html')).toHaveAttribute('data-vs-theme', 'light');
+  await expect(page.locator('html')).toHaveAttribute('data-vs-mode', 'mobile');
+  await expect(page.locator('body')).toHaveClass(/vs-root/);
+  await expect(visible(page).locator('.vs-brand__name')).toHaveText('VESPER');
+  await expect(visible(page).locator('.vs-brand__descriptor')).toHaveText('MEDIA GROUP');
+  await expect(visible(page).locator('.vs-brand__product')).toHaveText('Verbatim');
   expect(
     await visible(page)
-      .locator('.ms-brand__mark')
+      .locator('.vs-brand__mark')
       .evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
   ).toBe(true);
 });
@@ -96,14 +96,14 @@ for (const [id, control, eligible, blocked] of [
     await clipboard(page);
     await page.goto(`/statements/${id}`);
     const scope = visible(page).getByRole('combobox', { name: control, exact: true });
-    const badge = visible(page).locator('.wording-panel .ms-badge');
+    const badge = visible(page).locator('.wording-panel .vs-badge');
     await scope.selectOption(eligible!);
     await expect(badge).toHaveText('Ready to use');
-    await expect(badge).toHaveClass(/ms-tone-success/);
+    await expect(badge).toHaveClass(/vs-tone-success/);
     await visible(page).getByRole('button', { name: 'Copy exact wording' }).click();
     await scope.selectOption(blocked!);
     await expect(badge).toHaveText('Not for this use');
-    await expect(badge).toHaveClass(/ms-tone-warning/);
+    await expect(badge).toHaveClass(/vs-tone-warning/);
     const copy = visible(page).getByRole('button', { name: 'Copy unavailable', exact: true });
     await expect(copy).toBeDisabled();
     await copy.evaluate((button: HTMLButtonElement) => {
@@ -112,7 +112,7 @@ for (const [id, control, eligible, blocked] of [
     });
     expect(await page.evaluate(() => (window as any).__copies.length)).toBe(1);
     await scope.selectOption(eligible!);
-    await expect(badge).toHaveClass(/ms-tone-success/);
+    await expect(badge).toHaveClass(/vs-tone-success/);
     await visible(page).getByRole('button', { name: 'Copy exact wording' }).click();
     expect(await page.evaluate(() => (window as any).__copies.length)).toBe(2);
   });
@@ -211,7 +211,7 @@ test('320, 390, 768 and 1440 layouts retain 48px controls and fit their viewport
       ).toBe(true);
       await contentFits(page);
       const undersized = await visible(page)
-        .locator('.ms-button, .ms-input, .nav a')
+        .locator('.vs-button, .vs-input, .nav a')
         .evaluateAll((controls) =>
           controls
             .filter((control) => control.getBoundingClientRect().height < 47.5)
@@ -316,4 +316,123 @@ test('empty, invalid route and clipboard/storage failure states pass accessibili
   await visible(page).getByRole('button', { name: 'Save local request' }).click();
   await expect(visible(page).getByRole('alert')).toContainText('Browser storage is unavailable');
   await axe(page);
+});
+
+const legacy = {
+  scope: { audience: 'partners', region: 'apac' },
+  requests: [
+    {
+      id: 'legacy-1',
+      topic: 'Company outlook',
+      scope: { audience: 'partners', region: 'apac' },
+      reason: 'Keep my original request — unchanged.',
+      createdAt: '2025-10-20T12:00:00.000Z',
+    },
+  ],
+};
+test('legacy storage survives upgrade and reload, confirmed reset persists', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(
+    (saved) => localStorage.setItem('ready-to-say-v1', JSON.stringify(saved)),
+    legacy,
+  );
+  await page.goto('/requests');
+  await page.reload();
+  await expect(visible(page).locator('.request-card')).toContainText(legacy.requests[0]!.reason);
+  await expect(visible(page).getByRole('combobox', { name: 'Audience', exact: true })).toHaveValue(
+    'partners',
+  );
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('ready-to-say-v1')!))).toEqual(
+    legacy,
+  );
+  await page.goto('/demo');
+  await visible(page).getByRole('button', { name: 'Reset demo', exact: true }).click();
+  await visible(page).getByRole('button', { name: 'Cancel', exact: true }).click();
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('ready-to-say-v1')!))).toEqual(
+    legacy,
+  );
+  await visible(page).getByRole('button', { name: 'Reset demo', exact: true }).click();
+  await visible(page).getByRole('button', { name: 'Yes, reset demo' }).click();
+  await page.reload();
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('ready-to-say-v1')!))).toEqual({
+    scope: { audience: 'press', region: 'global' },
+    requests: [],
+  });
+});
+
+test('blocked storage reset stays honest and does not destroy saved requests', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(
+    (saved) => localStorage.setItem('ready-to-say-v1', JSON.stringify(saved)),
+    legacy,
+  );
+  await page.addInitScript(() => {
+    Storage.prototype.setItem = () => {
+      throw new Error('Blocked');
+    };
+  });
+  await page.goto('/demo');
+  await visible(page).getByRole('button', { name: 'Reset demo', exact: true }).click();
+  await visible(page).getByRole('button', { name: 'Yes, reset demo' }).click();
+  await expect(visible(page).getByRole('alert')).toContainText('session only');
+  await visible(page).getByRole('link', { name: 'Statement library', exact: true }).click();
+  await expect(visible(page)).toHaveCount(1);
+  await expect(visible(page).getByRole('combobox', { name: 'Audience', exact: true })).toHaveValue(
+    'press',
+  );
+  await page.goto('/requests');
+  await expect(visible(page).locator('.request-card')).toContainText(legacy.requests[0]!.reason);
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('ready-to-say-v1')!))).toEqual(
+    legacy,
+  );
+});
+
+test('blocked storage reads and writes keep reload and reset usable', async ({ page }) => {
+  await page.addInitScript(() => {
+    Storage.prototype.getItem = () => {
+      throw new Error('Blocked');
+    };
+    Storage.prototype.setItem = () => {
+      throw new Error('Blocked');
+    };
+  });
+  await page.goto('/demo');
+  await expect(visible(page).getByRole('alert')).toContainText('could not be loaded');
+  await visible(page).getByRole('button', { name: 'Reset demo', exact: true }).click();
+  await visible(page).getByRole('button', { name: 'Yes, reset demo' }).click();
+  await expect(visible(page).getByRole('alert')).toContainText('session only');
+  await page.reload();
+  await expect(visible(page).getByRole('alert')).toContainText('could not be loaded');
+  await visible(page).getByRole('link', { name: 'Statement library', exact: true }).click();
+  await expect(visible(page)).toHaveCount(1);
+  await expect(visible(page).getByRole('combobox', { name: 'Audience', exact: true })).toHaveValue(
+    'press',
+  );
+});
+
+test('renamed canonical wording copies byte-for-byte and safe-area action uses shared tokens', async ({
+  page,
+}) => {
+  await clipboard(page);
+  await page.goto('/statements/company-v2');
+  await visible(page).getByRole('button', { name: 'Copy exact wording' }).click();
+  expect(await page.evaluate(() => (window as any).__copies)).toEqual([
+    'Vesper Media Group creates space for original ideas across digital publishing, streaming entertainment, podcasts, and live events. Our focus is thoughtful storytelling and meaningful connections with audiences.',
+  ]);
+  const bar = visible(page).locator('.copy-bar');
+  expect(
+    await bar.evaluate((element) => parseFloat(getComputedStyle(element).paddingBottom)),
+  ).toBeGreaterThanOrEqual(16);
+  expect(
+    await page.evaluate(() =>
+      Array.from(document.styleSheets).some((sheet) =>
+        Array.from(sheet.cssRules).some(
+          (rule) =>
+            rule.cssText.includes('.vs-action-bar') &&
+            rule.cssText.includes('env(safe-area-inset-bottom'),
+        ),
+      ),
+    ),
+  ).toBe(true);
+  await unobscured(visible(page).getByRole('button', { name: 'Copy exact wording' }));
 });
