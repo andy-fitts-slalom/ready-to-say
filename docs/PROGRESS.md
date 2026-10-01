@@ -1,5 +1,9 @@
 # Verbatim / Vesper UI 2.0.0 — 2026-09-30
 
+## Production confirmation — 2026-10-01
+
+Commit `16233f3` was pushed to `main`, following the already-local metadata commit `dcc5a61`. [GitHub verification](https://github.com/andy-fitts-slalom/verbatim/actions/runs/36832941843) passed, and Vercel reported deployment complete. Opened [production Verbatim](https://ready-to-say.vercel.app/) in Chrome and confirmed the cool salt-flat background, Barlow Condensed wordmark/headline, audience and region selectors, and statement-library content. The existing domain and routing remain in place.
+
 ## Vesper UI 3.0 selected direction — 2026-10-01
 
 - Installed the independent `@vesper/ui` 3.0.0 tarball. Verbatim now uses the cool salt-flat reading canvas and Barlow Condensed display headings; the product-first wordmark and Vesper footer identity remain in place.

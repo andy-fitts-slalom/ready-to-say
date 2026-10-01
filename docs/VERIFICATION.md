@@ -1,5 +1,9 @@
 # Verbatim / Vesper UI 2.0.0 verification — 2026-09-30
 
+## Live result — 2026-10-01
+
+Pushed `16233f3` to `main`. [GitHub Actions run 36832941843](https://github.com/andy-fitts-slalom/verbatim/actions/runs/36832941843) succeeded, including its 60 browser checks. Vercel's commit status reported deployment complete. Opened [production Verbatim](https://ready-to-say.vercel.app/) in Chrome and visually confirmed the new salt-flat canvas, display type, plain form panel and right-padded dropdown arrows. The existing statement data, audience/region eligibility and routing remain intact.
+
 ## Vesper UI 3.0.0 — 2026-10-01
 
 - Portable `vendor/vesper-ui-3.0.0.tgz` installed; production bundle contains Barlow Condensed and the 35.9 kB salt-flat WebP.
