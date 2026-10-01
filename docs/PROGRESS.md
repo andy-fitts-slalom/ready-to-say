@@ -1,5 +1,9 @@
 # Verbatim / Vesper UI 2.0.0 — 2026-09-30
 
+## README visual refresh — 2026-10-01
+
+The README now embeds `docs/screenshots/vesper-3.0.0/readme-phone-library.png`, captured from the local Vesper UI 3.0 production build at 390 × 1250 after fonts loaded. The wordmark, scope controls, search and first statement card were inspected without browser page errors. No data or runtime source changed; 18 unit tests, production build, 60 browser tests and formatting passed.
+
 ## Production confirmation — 2026-10-01
 
 Commit `16233f3` was pushed to `main`, following the already-local metadata commit `dcc5a61`. [GitHub verification](https://github.com/andy-fitts-slalom/verbatim/actions/runs/36832941843) passed, and Vercel reported deployment complete. Opened [production Verbatim](https://ready-to-say.vercel.app/) in Chrome and confirmed the cool salt-flat background, Barlow Condensed wordmark/headline, audience and region selectors, and statement-library content. The existing domain and routing remain in place.

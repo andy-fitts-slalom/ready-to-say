@@ -9,7 +9,9 @@ A mobile-first statement library for press officers and regional communications 
 
 Built with Vue 3, TypeScript, Vite and Ionic Vue. Data and fonts ship with the app; there is no backend or runtime service to configure. The product is Verbatim; its production URL intentionally retains the earlier name.
 
-![Verbatim statement library on a phone](docs/screenshots/vesper-2.0.0/phone-library.png)
+![Verbatim statement library with Vesper UI 3.0 on a phone](docs/screenshots/vesper-3.0.0/readme-phone-library.png)
+
+Screenshot of the Vesper UI 3.0 local production build at 390px.
 
 ## Try the workflow
 
