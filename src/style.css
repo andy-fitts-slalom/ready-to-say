@@ -37,7 +37,7 @@ select {
   text-transform: capitalize;
 }
 select.vs-input {
-  padding-right: calc(12px + var(--vs-space-4));
+  padding-right: calc(12px + var(--vs-space-8));
 }
 textarea.vs-input {
   resize: vertical;
@@ -67,7 +67,6 @@ ion-icon {
 .brand-link {
   display: inline-flex;
   align-items: center;
-  gap: var(--vs-space-5);
   min-width: 0;
   color: var(--vs-text);
   text-decoration: none;
@@ -75,11 +74,16 @@ ion-icon {
 }
 .product-name {
   display: block;
-  border-left: 1px solid var(--vs-border-strong);
-  padding-left: var(--vs-space-5);
-  font: 400 clamp(2rem, 3vw, 2.5rem) / 1.3 var(--vs-font-display);
-  letter-spacing: -0.035em;
+  font: 400 clamp(2.75rem, 4vw, 3.5rem) / 1.3 var(--vs-font-display);
+  letter-spacing: -0.045em;
   white-space: nowrap;
+}
+.product-name::after {
+  display: block;
+  width: var(--vs-space-8);
+  margin-top: var(--vs-space-1);
+  border-top: 2px solid var(--vs-action);
+  content: '';
 }
 .demo-tag {
   align-self: flex-start;
@@ -239,6 +243,13 @@ footer {
   padding-block: var(--vs-space-6);
   font-size: var(--vs-text-xs);
   color: var(--vs-text-muted);
+}
+footer .vs-brand {
+  color: inherit;
+}
+footer .vs-brand__mark {
+  width: var(--vs-space-8);
+  height: var(--vs-space-8);
 }
 .back {
   margin-top: var(--vs-space-4);
@@ -414,12 +425,8 @@ footer {
   }
 }
 @media (max-width: 480px) {
-  .brand-link {
-    gap: var(--vs-space-3);
-  }
   .product-name {
-    padding-left: var(--vs-space-3);
-    font-size: clamp(1.6rem, 8vw, 2rem);
+    font-size: clamp(2.5rem, 12vw, 3rem);
   }
   .scope > .vs-field {
     flex-basis: 100%;
