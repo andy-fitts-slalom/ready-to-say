@@ -1,3 +1,19 @@
+# Verbatim / Vesper UI 2.0.0 — 2026-09-30
+
+Current instructions supersede the historical branch restrictions below. Work is on main, starting at `60e0302`, with the user's authorization to commit increments and push main after checks. Existing history and unrelated `.DS_Store` files are preserved.
+
+- Upgraded the existing shared integration to vendored `@vesper/ui` 2.0.0, with matching lockfile, exports, `vs-` classes/tokens/attributes, supplied favicon and VesperBrand lockup. The HTML theme color now matches petrol. Removed the old tarball/mark and all obsolete runtime Meridian references.
+- Verbatim is the mobile-first approved-wording library for Vesper Media Group. Exactly 14 canonical records replace only the parent name; a complete structured comparison against baseline confirmed all other data unchanged. Original domain, persistence, Ionic shell/routing and copy guard remain unchanged. The legacy storage key is retained deliberately.
+- Root README, agent guidance, architecture, license attribution and dated BRIEF addendum reflect the current product. Prior planning and earlier verification evidence are retained. Third-party notices regenerated for 34 runtime packages; font notices preserved.
+- Baseline: 18 unit tests, production build, 52 browser tests (34.3s) and formatting passed. Initial sandbox server denial was resolved using approved local-server access. The first upgraded 52-test browser run passed (31.1s).
+- Added explicit legacy reload/reset, blocked read/write/reset and literal exact-copy coverage. Initial new tests mistakenly looked for scope controls on Demo info; corrected navigation to the library, without changing app behavior.
+- Captured and inspected the actual phone library, eligible detail, manual selection fallback, expiry restriction, invalid request, narrow invalid route and desktop library/detail. See current VERIFICATION.md for final checks and limitations.
+- Publication target: https://github.com/andy-fitts-slalom/verbatim, Vercel project `verbatim`, existing https://ready-to-say.vercel.app. Main automatic deployment remains enabled; old refactor branch stays excluded. The prior parent-task automatic approval rejection for new production domain/routing changes remains a blocker; no routing change is attempted here.
+
+- Final local checks: 18/18 unit tests, build, 60/60 browser tests (40.9s), formatting and whitespace checks passed. Clean archived migration commit `0eae6e6` installed offline and built independently.
+
+---
+
 # Main merge authorization — 2026-09-30
 
 The user explicitly requested merging the branch commits into main so the complete history is visible there. Main was fast-forwarded to include `5362801`, `9d1192c` and `74ec84e` without squashing or rewriting them. This supersedes the earlier main-push restriction below. No application code changed during this merge; the recorded 18 unit and 52 browser tests apply to the same code. Existing unrelated `.DS_Store` files remain untouched.

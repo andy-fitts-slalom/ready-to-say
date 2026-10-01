@@ -1,3 +1,53 @@
+# Verbatim / Vesper UI 2.0.0 verification — 2026-09-30
+
+Application commit: `0eae6e6`. This section supersedes the historical migration/deployment status below; earlier evidence remains intact.
+
+| Check                  | Actual result                                                                                                                                                                    |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm test`             | 18/18 unit tests passed                                                                                                                                                          |
+| `npm run build`        | TypeScript and Vite passed; existing Ionic chunk-size warning remains (924.05 KB / 217.32 KB gzip main JS)                                                                       |
+| `npm run test:e2e`     | 60/60 passed, 40.9s, local production preview                                                                                                                                    |
+| `npm run format:check` | Passed                                                                                                                                                                           |
+| `git diff --check`     | Passed                                                                                                                                                                           |
+| Domain and persistence | Baseline diff is empty for src/domain, src/state.ts, original browser suite, original eligibility tests and vercel.json                                                          |
+| Canonical strings      | Full structured dataset comparison against baseline equals only replacing Meridian Signal Group with Vesper Media Group; 14 statement strings and one family description changed |
+| Dependency notices     | Existing script regenerated 34 runtime notices; original font notices retained                                                                                                   |
+| Brand/runtime audit    | No old package imports, ms- tokens/attributes, old name or obsolete raw colors remain in application source; legacy storage key deliberately retained                            |
+
+Independent install: a clean `git archive` of `0eae6e6` in `/tmp/verbatim-portable-0eae6e6` passed `npm ci --offline` and production build without access to a sibling package path.
+
+## Behavior and responsive evidence
+
+The original 32 browser cases remain unchanged. The previous 20 presentation regressions now target Vesper exports/classes/names. Eight new phone/desktop cases cover legacy stored requests and preferences without migration, exact retention across reload, cancellation and persisted reset, blocked storage writes retaining old durable data after a session reset, blocked reads/writes and reload recovery, a literal canonical copy expectation and the shipped safe-area CSS rule plus reachable copy action.
+
+Coverage includes eligible byte-exact copy, disabled-button bypass protection, draft/expired/withdrawn/future/superseded/audience/region variants, highest usable version, replacement navigation, scope changes revoking fallback, request validation, local-only language, persistence/reset, invalid routes, filters and counts. Unit checks retain inclusive dates and replacement cycle safety. Ionic view-entry focus, keyboard skip/tab/copy, reduced motion, 48px targets, 320/390/768/1440px Ionic and document overflow, 200% text/reflow and unobscured controls pass. Axe A/AA checks pass in the covered normal, empty and error states.
+
+## Rendered review
+
+Captured from local production preview `http://127.0.0.1:4293` using installed Chrome; each screenshot was opened and visually inspected. No visual regression required a layout override. The warm cream reading surface, petrol action, original Vesper mark, clear state labels and separate approval metadata preserve the intended hierarchy.
+
+| Screenshot                                                            | Viewport / state                                            |
+| --------------------------------------------------------------------- | ----------------------------------------------------------- |
+| [Baseline](screenshots/vesper-2.0.0/baseline-library.png)             | 390×844, pre-upgrade library                                |
+| [Phone library](screenshots/vesper-2.0.0/phone-library.png)           | 390×844, Vesper identity and scope                          |
+| [Eligible wording](screenshots/vesper-2.0.0/phone-eligible.png)       | 390×844, exact company-v2 wording and copy action           |
+| [Manual fallback](screenshots/vesper-2.0.0/phone-manual-copy.png)     | 390×844, mocked clipboard denial and selected readonly text |
+| [Expired](screenshots/vesper-2.0.0/phone-expired.png)                 | 390×844, restriction/recovery and disabled copy             |
+| [Invalid request](screenshots/vesper-2.0.0/phone-invalid-request.png) | 390×844, linked required reason error                       |
+| [Invalid route](screenshots/vesper-2.0.0/narrow-invalid-route.png)    | 320×640, wrapped navigation and return action               |
+| [Desktop library](screenshots/vesper-2.0.0/desktop-library.png)       | 1440×1000, scope, filters, ready/total counts and cards     |
+| [Desktop detail](screenshots/vesper-2.0.0/desktop-detail.png)         | 1440×1000, wording and metadata columns                     |
+
+Learner requirements are mapped to concrete repository evidence in [LEARNER-AUDIT.md](LEARNER-AUDIT.md). The dated BRIEF addendum preserves original planning while documenting the delivered names and design.
+
+## Limits and routing blocker
+
+Browser viewport emulation is not a physical iOS/Android keyboard, hardware safe-area or screen-reader audit. Safe-area verification inspects the actual shipped env() rule, computed padding and unobscured action; it does not simulate a hardware inset. Automated clipboard tests use mocks. No authentication, shared backend, native packaging, synchronization or real notifications are introduced.
+
+The Vercel project is `verbatim`; the existing production domain remains https://ready-to-say.vercel.app. A new production domain/routing change was rejected by automatic approval review in the parent task. No routing change is authorized or attempted here. Local success is not yet evidence of the post-push deployment; publication results will be appended after verification.
+
+---
+
 # Meridian UI 1.0.0 verification — 2026-09-30
 
 This section applies to the **local refactor branch**, not the production site. The earlier production evidence is retained below as historical context.
