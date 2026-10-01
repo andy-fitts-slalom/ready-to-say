@@ -182,7 +182,6 @@ function doReset() {
         <a :href="`#main-${pageId}`" class="skip vs-skip">Skip to content</a>
         <header class="header">
           <RouterLink to="/" class="brand-link" aria-label="Verbatim home">
-            <VesperBrand />
             <span class="product-name">Verbatim</span>
           </RouterLink>
           <VesperBadge tone="neutral" class="demo-tag">Fictional demo</VesperBadge>
@@ -608,9 +607,7 @@ function doReset() {
             class="notice result-notice"
           />
         </main>
-        <footer>
-          <span>Vesper Media Group</span><span>Fictional content. Real clarity.</span>
-        </footer>
+        <footer><VesperBrand /><span>Fictional content. Real clarity.</span></footer>
       </div>
     </IonContent>
   </IonPage>

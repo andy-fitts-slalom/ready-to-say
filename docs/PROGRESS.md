@@ -1,5 +1,11 @@
 # Verbatim / Vesper UI 2.0.0 — 2026-09-30
 
+## Product-first identity — 2026-10-01
+
+- Following visual feedback, the header now leads with a Verbatim display wordmark. The vendored Vesper mark and parent name appear in the footer attribution instead of competing in the header. The fictional-demo label remains visible.
+- No statement, eligibility, copy, storage or routing behavior changed.
+- No new publication blocker. The existing production domain and historical branch deployment exclusion remain in place.
+
 ## Product lockup refinement — 2026-10-01
 
 - Kept the vendored Vesper parent mark and wordmark, but moved Verbatim out of the component's small third line. A separate Caslon product name now sits beside the parent identity, divided by a subtle rule; mobile spacing and type scale down for narrow widths.

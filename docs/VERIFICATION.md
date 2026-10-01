@@ -1,5 +1,11 @@
 # Verbatim / Vesper UI 2.0.0 verification — 2026-09-30
 
+## Product-first identity — 2026-10-01
+
+Verbatim now leads the header as a display wordmark with a short petrol rule; the shared Vesper parent lockup is in the footer. This supersedes the header arrangement described in the earlier lockup-refinement section below. Local production-preview screenshots at 320×640, 390×844 and 1440×1000 were visually inspected, plus the 390px footer. The identity, badge and navigation fit without horizontal overflow.
+
+Validation: 18/18 unit tests, production build, 60/60 browser tests on the final run, formatting and whitespace checks passed. The first browser run had one intermittent Ionic page-transition timing failure in an unchanged back-navigation test; it passed on the complete rerun. Browser viewports are emulated; physical-device and screen-reader limits below still apply.
+
 ## Product lockup refinement — 2026-10-01
 
 The header now gives Verbatim a distinct display treatment beside the unchanged Vesper parent identity. Local production-preview screenshots at 320×640, 390×844 and 1440×1000 were visually inspected: the lockup is legible, the fictional-demo badge wraps below it on narrow screens, and navigation remains clear. The first browser run found display-font clipping at 200% root text size; increasing the name's line height fixed it.

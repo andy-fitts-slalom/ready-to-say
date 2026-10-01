@@ -71,17 +71,20 @@ async function axe(page: Page) {
   ).toEqual([]);
 }
 
-test('Vesper light mobile foundation and shared parent brand load', async ({ page }) => {
+test('Verbatim leads the header and Vesper parent brand appears in the footer', async ({
+  page,
+}) => {
   await page.goto('/');
   await expect(page.locator('html')).toHaveAttribute('data-vs-theme', 'light');
   await expect(page.locator('html')).toHaveAttribute('data-vs-mode', 'mobile');
   await expect(page.locator('body')).toHaveClass(/vs-root/);
-  await expect(visible(page).locator('.vs-brand__name')).toHaveText('VESPER');
-  await expect(visible(page).locator('.vs-brand__descriptor')).toHaveText('MEDIA GROUP');
-  await expect(visible(page).locator('.product-name')).toHaveText('Verbatim');
+  await expect(visible(page).locator('.header .product-name')).toHaveText('Verbatim');
+  await expect(visible(page).locator('.header .vs-brand')).toHaveCount(0);
+  await expect(visible(page).locator('footer .vs-brand__name')).toHaveText('VESPER');
+  await expect(visible(page).locator('footer .vs-brand__descriptor')).toHaveText('MEDIA GROUP');
   expect(
     await visible(page)
-      .locator('.vs-brand__mark')
+      .locator('footer .vs-brand__mark')
       .evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
   ).toBe(true);
 });
